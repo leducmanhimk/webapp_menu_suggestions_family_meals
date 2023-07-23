@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Save recipe</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+</head>
+
+<body>
+<div class="container">
+    <h1>Recipe and Food</h1>
+    <hr>
+    <h2>Save recipe</h2>
+
+    <form action="#" th:action="@{/saveRecipe}" th:object="${recipe}" method="POST">
+        <input type="text" th:field="*{image}" placeholder="image" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{title}" placeholder="title" class="form-control mb-4 col-4">
+
+        <input type="text" th:field="*{description}" placeholder="description" class="form-control mb-4 col-4">
+
+        <button type="submit" class="btn btn-info col-2"> Save Recipe</button>
+    </form>
+
+    <hr>
+
+    <a th:href="@{/FoodandRecipeBrowser.html}"> Back to Recipe List</a>
+</div>
+</body>
+
+</html>
