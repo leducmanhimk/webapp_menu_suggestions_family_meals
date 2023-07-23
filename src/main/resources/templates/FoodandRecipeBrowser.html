@@ -1,22 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{templates/layout.html}">
 
 <head>
     <meta charset="ISO-8859-1">
     <title>Brower Recipe and Food</title>
     <link rel="stylesheet" href="/css/bootstrap.css">
-
-
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/aos.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 </head>
 
 <body>
+<header  th:insert="layout.html">
 
+</header>
 <div class="container my-2">
     <h1 class="text-lg-center">Recipe and Food</h1>
 
     <a th:href="@{/showNewRecipeform}" class="btn btn-primary btn-sm mb-3"> Add Recipe </a>
 
-    <table border="1" class="table table-striped table-responsive-md">
+    <table border="1" class="table table-striped table-responsive-md table-hover table-responsive">
         <thead>
         <tr>
             <th>Image</th>
@@ -27,7 +37,9 @@
         </thead>
         <tbody>
         <tr th:each="recipe : ${listrecipes}">
-            <td th:text="${recipe.image}"></td>
+            <td>
+                <img th:src="@{${'/img/' + recipe.image}}" width="120" alt="image about food">
+            </td>
             <td th:text="${recipe.title}"></td>
             <td th:text="${recipe.description}"></td>
             <td> <a th:href="@{/showFormForUpdate/{id}(id=${recipe.id})}" class="btn btn-primary">Update</a>
@@ -37,6 +49,15 @@
         </tbody>
     </table>
 </div>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.waypoints.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/magnific-popup-options.js"></script>
+    <script src="/js/main.js"></script>
 </body>
 
 </html>

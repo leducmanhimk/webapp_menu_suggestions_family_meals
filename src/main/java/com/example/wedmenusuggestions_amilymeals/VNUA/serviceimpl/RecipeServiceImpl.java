@@ -1,6 +1,8 @@
-package com.example.wedmenusuggestions_amilymeals.VNUA.services;
+package com.example.wedmenusuggestions_amilymeals.VNUA.serviceimpl;
 
 import com.example.wedmenusuggestions_amilymeals.VNUA.models.Recipe;
+import com.example.wedmenusuggestions_amilymeals.VNUA.services.RecipeRepository;
+import com.example.wedmenusuggestions_amilymeals.VNUA.services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class RecipeServiceImpl implements RecipeService{
+public class RecipeServiceImpl implements RecipeService {
 
     @Autowired
     private RecipeRepository recipeRepository;
