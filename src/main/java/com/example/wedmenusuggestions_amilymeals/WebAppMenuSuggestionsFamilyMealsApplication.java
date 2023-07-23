@@ -9,6 +9,7 @@ public class WebAppMenuSuggestionsFamilyMealsApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(WebAppMenuSuggestionsFamilyMealsApplication.class, args);
+
     }
 
 }
