@@ -56,6 +56,14 @@ textarea.form-control {
   height: inherit;
 }
 
+.bottom_spacer {
+  padding-bottom: 20px;
+}
+
+.big_top_spacer {
+  padding-top: 40px;
+}
+
 .browser_sidebar {
   -webkit-border-top-left-radius: 5px;
   -moz-border-radius-topleft: 5px;
@@ -535,10 +543,91 @@ header .navbar .cta-btn a:hover {
 .blog .bg-image {
   height: 300px;
 }
+.omb_login.login_padding_bottom {
+  padding-bottom: 100px;
+}
+
+.omb_login .omb_authTitle {
+  text-align: center;
+  line-height: 300%;
+}
+
+.omb_login .omb_socialButtons {
+  padding-top: 20px;
+}
+
+.omb_login .omb_socialButtons a {
+  color: white;
+  opacity: 0.9;
+  text-align: center;
+}
+
+.omb_login .omb_socialButtons a:hover {
+  color: white;
+  opacity: 1;
+}
+
+.omb_login .omb_socialButtons .omb_btn-facebook {
+  background: #3b5998;
+}
+
+.omb_login .omb_socialButtons .omb_btn-twitter {
+  background: #00aced;
+}
+
+.omb_login .omb_socialButtons .omb_btn-google {
+  background: #c32f10;
+}
+
+.omb_login .omb_loginOr {
+  position: relative;
+  font-size: 1.3em;
+  color: #aaa;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.omb_login .omb_loginOr .omb_hrOr {
+  background-color: #cdcdcd;
+  height: 1px;
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+}
+
+.omb_login .omb_loginOr .omb_spanOr {
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: -0.8em;
+  margin-left: -1.5em;
+  background-color: #F9F9F9;
+  width: 3em;
+  text-align: center;
+}
+
+.omb_login .omb_loginForm .input-group.i {
+  width: 2em;
+}
+
+.omb_login .omb_loginForm .help-block {
+  color: red;
+}
+
+.omb_login .omb_forgotPwd, .omb_signup {
+  margin-top: 20px;
+}
 
 .custom-icon {
   font-size: 70px;
   color: #ff7404;
+}
+/* text */
+.display-6 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  line-height: 1.2;
 }
 
 /* Owl Carousel */

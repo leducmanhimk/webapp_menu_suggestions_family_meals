@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+  <link rel="stylesheet" href="/css/bootstrap.css">
+  <link rel="stylesheet" href="/css/animate.css">
+  <link rel="stylesheet" href="/css/owl.carousel.min.css">
+  <link rel="stylesheet" href="/css/aos.css">
+  <link rel="stylesheet" href="/css/magnific-popup.css">
+  <link rel="stylesheet" href="/fonts/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="/fonts/fontawesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+</head>
+<body style="background-color: #F9F9F9">
+<div id="top_nav" class="navbar navbar-expand-md navbar-purple">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="/img/logo.png" height="76" width="90" alt=""/></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ETM_navbar" aria-controls="ETM_navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="ETM_navbar" class="navbar-collapse collapse">
+      <ul class="navbar-nav justify-content-md-center col-md">
+        <li class="nav-item"><a class="nav-link" href="/how-it-works/">How It Works</a></li>
+        <li class="nav-item"><a class="nav-link" href="/food/browse/?type=recipe">Browse
+          Foods</a></li>
+        <li class="nav-item"><a class="nav-link" href="/diet-plan/">Supported Diets</a>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/professionals/">For Professionals</a>
+        </li>
+      </ul>
+      <form class="form text-center no-gutters">
+        <div class="col-auto ">
+          <a class="btn btn-primary btn-sm mb-3 mt-1 " href="/user/register-free-account/" onclick="UrlFunctions.addNextUrlParameter(this)">Sign Up</a>
+        </div>
+        <a class="sign-in-link" href="/user/login/" onclick="UrlFunctions.addNextUrlParameter(this)">Already a member? Sign in.</a>
+      </form>
+    </div>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="omb_login login_padding_bottom">
+    <div class="row big_top_spacer bottom_spacer">
+      <div class="col-12 text-center">
+        <h1 class="display-6">
+          Log in
+        </h1>
+      </div>
+    </div>
+    <div class="row omb_socialButtons">
+      <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+        <a rel="nofollow" href="/login/facebook/" class="d-block facebook_login_button text-center btn-primary btn-lg mb-3" onclick="UrlFunctions.addNextUrlParameter(this)">
+          <i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
+        <a rel="nofollow" href="/login/google-oauth2/" class="d-block google_login_button text-center btn-danger btn-lg mb-3" onclick="UrlFunctions.addNextUrlParameter(this)">
+          <i class="fa fa-google"></i> Sign in with <b>Google</b></a>
+        <a rel="nofollow" href="/login/apple-id/" class="d-block apple_login_button text-center btn-dark btn-lg" onclick="UrlFunctions.addNextUrlParameter(this)">
+          <i class="fa fa-apple"></i> Sign in with <b>Apple</b></a>
+      </div>
+    </div>
+    <div class="row omb_loginOr">
+      <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+        <hr class="omb_hrOr">
+        <span class="omb_spanOr">or</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+        <form class="omb_loginForm" method="post" action="/user/login/"><input type="hidden" name="csrfmiddlewaretoken" value="lMr7LatqCQ08x7Zs70yAsuLJiAEQVaeM5QnqC9Uz3fxBnX6vW9HYFNT2Ghrd0Dcr">
+          <div class="input-group small_bottom_spacer">
+            <div class="input-group-prepend">
+              <span style="min-width: 42px;" class="input-group-text"><i class="fa fa-user" aria-hidden="true"></i></span>
+            </div>
+            <input type="text" class="form-control" value="" name="username" placeholder="Email or Username">
+          </div>
+          <span class="help-block"></span>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span style="min-width: 42px;" class="input-group-text"><i class="fa fa-key" aria-hidden="true"></i></span>
+            </div>
+            <input type="password" class="form-control" name="password" placeholder="Password">
+          </div>
+          <br>
+          <input type="hidden" name="next" value="">
+          <button class="btn btn-lg btn-orange btn-block" type="submit">Log in</button>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+        <div class="omb_forgotPwd">
+          <a href="/user/password/reset/">Forgot your password?</a>
+        </div>
+        <div class="omb_signup">
+          <a href="/user/register-free-account/">Create a new account?</a>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+
+</body>
+    <script src="/js/jquery-3.2.1.min.js"></script>
+    <script src="/js/popper.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/owl.carousel.min.js"></script>
+    <script src="/js/jquery.waypoints.min.js"></script>
+    <script src="/js/aos.js"></script>
+    <script src="/js/jquery.magnific-popup.min.js"></script>
+    <script src="/js/magnific-popup-options.js"></script>
+    <script src="/js/main.js"></script>
+</html>
