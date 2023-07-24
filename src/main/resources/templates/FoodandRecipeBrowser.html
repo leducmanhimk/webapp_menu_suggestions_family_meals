@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="ISO-8859-1">
-    <title>Brower Recipe and Food</title>
+    <title>Recipe and Food</title>
     <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/animate.css">
@@ -17,37 +18,364 @@
     <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 </head>
 
-<body>
-<header  th:insert="layout.html">
+<body style="background-color:#F9F9F9">
 
-</header>
-<div class="container my-2">
+<div id="top_nav" class="navbar navbar-expand-md navbar-purple">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="/img/logo.png" height="76" width="90" alt=""/></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ETM_navbar" aria-controls="ETM_navbar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+        <div id="ETM_navbar" class="navbar-collapse collapse">
+            <ul class="navbar-nav justify-content-md-center col-md">
+                <li class="nav-item"><a class="nav-link" href="/how-it-works/">How It Works</a></li>
+                <li class="nav-item"><a class="nav-link" href="/food/browse/?type=recipe">Browse
+                    Foods</a></li>
+                <li class="nav-item"><a class="nav-link" href="/diet-plan/">Supported Diets</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/professionals/">For Professionals</a>
+                </li>
+
+
+            </ul>
+
+            <form class="form text-center no-gutters">
+                <div class="col-auto ">
+                    <a class="btn btn-primary btn-sm mb-3 mt-1 " href="/user/register-free-account/" onclick="UrlFunctions.addNextUrlParameter(this)">Sign Up</a>
+                </div>
+                <a class="sign-in-link" href="/user/login/" onclick="UrlFunctions.addNextUrlParameter(this)">Already a member? Sign in.</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid px-md-5">
+    <div class="row top_margin">
+    <div class="col-12 text-center">
     <h1 class="text-lg-center">Recipe and Food</h1>
+    </div>
+        <div class="col-12 col-sm-8 offset-sm-2">
 
-    <a th:href="@{/showNewRecipeform}" class="btn btn-primary btn-sm mb-3"> Add Recipe </a>
+        </div>
+    </div>
+    <div class="row my-4">
+        <div class="col-12 col-md-6 col-lg-4">
+            <a th:href="@{/showNewRecipeform}" class="btn btn-primary btn-sm mb-3 mt-1"><i class="fa fa-plus" aria-hidden="true"></i> Create a Recipe </a>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="card bg-light text-center mt-1">
+                <div class="card-header py-1">
+                    Display / sort
+                </div>
+                <div class="card-body py-1">
+                    <div class="row justify-content-center">
+                        <label class="col-auto m-0">
+                            <input checked type="radio" name="ascending" value="">
+                            ascending
+                        </label>
+                        <label class="col-auto m-0">
+                            <input type="radio" name="decrease" value="">
+                            decrease
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5 search_padding">
 
-    <table border="1" class="table table-striped table-responsive-md table-hover table-responsive">
-        <thead>
+        </div>
+        <div class="search_padding col-7 top_pagination">
+            <div class="inline_block">Result <strong>1 - 20</strong> out of 1000+</div>
+            <div class="inline_block" style="margin-left: 20px;">
+                <span class="">
+                    Page of 1 of 50+
+                </span>
+                <a href=""><i class="fa fa-chevron-right"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2 browser_sidebar search_padding">
+            <div class="form-group row">
+                <div class="col-12">
+                    <div class="clear_browser_search"><i class="fa fa-times"></i></div>
+                    <input type="text" name="q" placeholder="Search recipes..." class="search-query form-control food_input" style="margin-top:15px; width: 100%;">
+                </div>
+            </div>
+            <div class="browse_type">
+                <h4>Type</h4>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe" data-category="recipe" class="nav-link recipe active">
+                            Recipes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food" data-category="food" class="nav-link food ">
+                            Basic foods
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=restaurant" data-category="restaurant" class="nav-link restaurant ">
+                            Restaurant foods
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=branded" data-category="branded" class="nav-link branded ">
+                            Branded foods
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="recipe_type_categories">
+                <!-- food groups is either a list of recipe categories or usda categories -->
+                <h4>Categories</h4>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe" data-category="branded" class="nav-link all_category active">
+                            All
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe&amp;group=Appetizers" data-category="branded" class="nav-link ">
+                            Appetizers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe&amp;group=Breakfast%20foods" data-category="branded" class="nav-link ">
+                            Breakfast foods
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe&amp;group=Desserts" data-category="branded" class="nav-link ">
+                            Desserts
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe&amp;group=Drinks" data-category="branded" class="nav-link ">
+                            Drinks
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe&amp;group=Mostly%20meat" data-category="branded" class="nav-link ">
+                            Mostly meat
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe&amp;group=Protein%20shakes" data-category="branded" class="nav-link ">
+                            Protein shakes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe&amp;group=Salads" data-category="branded" class="nav-link ">
+                            Salads
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe&amp;group=Sandwiches" data-category="branded" class="nav-link ">
+                            Sandwiches
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe&amp;group=Pasta" data-category="branded" class="nav-link ">
+                            Pasta
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe&amp;group=Soups" data-category="branded" class="nav-link ">
+                            Soups
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe&amp;group=Other" data-category="branded" class="nav-link ">
+                            Other
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe&amp;group=Main%20dishes" data-category="branded" class="nav-link ">
+                            Main dishes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=recipe&amp;group=Side%20dishes" data-category="branded" class="nav-link ">
+                            Side dishes
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="food_type_categories" style="display:none">
+                <!-- food groups is either a list of recipe categories or usda categories -->
+                <h4>Categories</h4>
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food" data-category="all_category" class="nav-link  active">
+                            All
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Dairy%20Products" data-category="Dairy Products" class="nav-link ">
+                            Dairy Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Spices%20and%20Herbs" data-category="Spices and Herbs" class="nav-link ">
+                            Spices and Herbs
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Baby%20Foods" data-category="Baby Foods" class="nav-link ">
+                            Baby Foods
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Fats%20and%20Oils" data-category="Fats and Oils" class="nav-link ">
+                            Fats and Oils
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Poultry%20Products" data-category="Poultry Products" class="nav-link ">
+                            Poultry Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Soups%2C%20Sauces%2C%20and%20Gravies" data-category="Soups, Sauces, and Gravies" class="nav-link ">
+                            Soups, Sauces, and Gravies
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Sausages%20and%20Luncheon%20Meats" data-category="Sausages and Luncheon Meats" class="nav-link ">
+                            Sausages and Luncheon Meats
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Breakfast%20Cereals" data-category="Breakfast Cereals" class="nav-link ">
+                            Breakfast Cereals
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Fruits%20and%20Fruit%20Juices" data-category="Fruits and Fruit Juices" class="nav-link ">
+                            Fruits and Fruit Juices
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Pork%20Products" data-category="Pork Products" class="nav-link ">
+                            Pork Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Vegetables%20and%20Vegetable%20Products" data-category="Vegetables and Vegetable Products" class="nav-link ">
+                            Vegetables and Vegetable Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Nut%20and%20Seed%20Products" data-category="Nut and Seed Products" class="nav-link ">
+                            Nut and Seed Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Beef%20Products" data-category="Beef Products" class="nav-link ">
+                            Beef Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Beverages" data-category="Beverages" class="nav-link ">
+                            Beverages
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Finfish%20and%20Shellfish%20Products" data-category="Finfish and Shellfish Products" class="nav-link ">
+                            Finfish and Shellfish Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Soy%20and%20Legume%20Products" data-category="Soy and Legume Products" class="nav-link ">
+                            Soy and Legume Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Lamb%2C%20Veal%2C%20and%20Game%20Products" data-category="Lamb, Veal, and Game Products" class="nav-link ">
+                            Lamb, Veal, and Game Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Baked%20Products" data-category="Baked Products" class="nav-link ">
+                            Baked Products
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Sweets" data-category="Sweets" class="nav-link ">
+                            Sweets
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Cereal%20Grains%20and%20Pasta" data-category="Cereal Grains and Pasta" class="nav-link ">
+                            Cereal Grains and Pasta
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Fast%20Foods" data-category="Fast Foods" class="nav-link ">
+                            Fast Foods
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Meals%2C%20Entrees%2C%20and%20Sidedishes" data-category="Meals, Entrees, and Sidedishes" class="nav-link ">
+                            Meals, Entrees, and Sidedishes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Snacks" data-category="Snacks" class="nav-link ">
+                            Snacks
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Ethnic%20Foods" data-category="Ethnic Foods" class="nav-link ">
+                            Ethnic Foods
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/food/browse/?type=food&amp;group=Restaurant%20Foods" data-category="Restaurant Foods" class="nav-link ">
+                            Restaurant Foods
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-10 search_padding ">
+    <table class="table align-middle mb-0 bg-white table-hover table-responsive table-bordered table-sm" style="border-radius: 5px;">
+        <thead class="bg-light">
         <tr>
             <th>Image</th>
             <th>Title</th>
             <th>description</th>
+            <th>cooktime</th>
+            <th>Categories</th>
             <th> Actions </th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="recipe : ${listrecipes}">
             <td>
-                <img th:src="@{${'/img/' + recipe.image}}" width="120" alt="image about food">
+                <img th:src="@{${'/img/' + recipe.image}}" width="120" alt="image about food" class="d-flex align-items-center">
             </td>
-            <td th:text="${recipe.title}"></td>
+            <td class="text-blue" th:text="${recipe.title}"></td>
             <td th:text="${recipe.description}"></td>
-            <td> <a th:href="@{/showFormForUpdate/{id}(id=${recipe.id})}" class="btn btn-primary">Update</a>
+            <td th:text="${recipe.cooktime} + minute"></td>
+            <td th:text="${recipe.categories}"></td>
+            <td> <a th:href="@{/showFormForUpdate/{id}(id=${recipe.id})}" class="btn btn-link btn-rounded btn-sm fw-bold">Update</a>
                 <a th:href="@{/deleteEmployee/{id}(id=${recipe.id})}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
+        </div>
+    </div>
 </div>
     <script src="/js/jquery-3.2.1.min.js"></script>
     <script src="/js/popper.min.js"></script>
