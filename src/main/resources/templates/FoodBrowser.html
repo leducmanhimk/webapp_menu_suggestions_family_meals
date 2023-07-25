@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{templates/layout.html}">
-
 <head>
     <meta charset="ISO-8859-1">
     <title>Recipe and Food</title>
@@ -360,7 +359,7 @@
             <td>
                 <img th:src="@{${'/img/' + recipe.image}}" width="120" alt="image about food" class="d-flex align-items-center">
             </td>
-            <td class="text-blue" th:text="${recipe.title}"></td>
+            <td class="text-blue" th:text="${recipe.title}"> </td>
             <td th:text="${recipe.description}"></td>
             <td th:text="${recipe.cooktime} + minute"></td>
             <td th:text="${recipe.categories}"></td>

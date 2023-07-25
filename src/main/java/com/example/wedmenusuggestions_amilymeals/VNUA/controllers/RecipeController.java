@@ -6,20 +6,17 @@ import com.example.wedmenusuggestions_amilymeals.VNUA.services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class RecipeController {
 
     @Autowired
     private RecipeService recipeService;
-    @GetMapping("/FoodandRecipeBrowser")
+    @GetMapping("/FoodBrower")
     public String viewHomepage(Model model){
         model.addAttribute("listrecipes",recipeService.getRecipe());
-        return "FoodandRecipeBrowser";
+        return "FoodBrowser";
     }
 
     @GetMapping("/showNewRecipeform")
@@ -48,6 +45,13 @@ public class RecipeController {
         return "update_recipe";
     }
 
+    @GetMapping("/recipe/{id}")
+    public String showDetailRecipe(@PathVariable(value = "id")long id,Model model){
+        Recipe recipe = recipeService.getRecipeById(id);
+
+        model.addAttribute("recipe",recipe);
+        return "detailRecipe";
+    }
 
     @GetMapping("/deleteRecipe/{id}")
     public String deleteRecipe(@PathVariable(value = "id") long id) {

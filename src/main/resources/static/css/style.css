@@ -460,6 +460,14 @@ header .navbar .cta-btn a:hover {
   font-size: 16px;
 }
 
+.layout_shift_spacer {
+  min-height: 1000px;
+}
+
+.loading_food {
+  padding-top: 20px;
+  padding-left: 10px;
+}
 .testimonial p {
   font-size: 20px;
   color: #000;
@@ -488,6 +496,16 @@ header .navbar .cta-btn a:hover {
 .sched, .blog {
   display: block;
   background-color: #fff;
+}
+.search-query {
+  padding-right: 14px;
+  padding-right: 4px \9;
+  padding-left: 14px;
+  padding-left: 4px \9;
+  margin-bottom: 0;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
 }
 
 .sched .text, .sched .bg-image, .blog .text, .blog .bg-image {
