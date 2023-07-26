@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/fonts/fontawesome/css/font-awesome.min.css">
   <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 </head>
-<body>
+<body style="background-color: #F9F9F9">
 <nav id="top_nav" class="navbar navbar-expand-md navbar-purple navbar-dark">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -42,586 +42,152 @@
     </div>
   </div>
 </nav>
-<div class="container top_margin">
-  <div class="row">
-    <div class="col-12 layout_shift_spacer">
-        <div class="row">
-            <div class="loading_food col-8">
-                <a href="/FoodBrowser"> back to list recipe</a>
-            </div>
-            <div class="col-4 form-group" id="search-bar">
-                <input class="search-query form-control food-input" placeholder="Search recipes database..." id="search_query" type="text" style="margin-top:20px; width: 100%;">
-            </div>
-            <div class="recipe_view content_container col-12 col-md-10 offset-md-1" style="padding-bottom: 20px"><div id="recipe_viewer" class="div">
-                <div class="modal-header">
-                    <div class="col text-center">
-                        <h2 class="modal-title" th:text="${recipe.title}"></h2>
-                        <div class="pb-2"></div>
-                        <small class="submitted_by_text">
-                            submitted by
-                            curly_q
-                        </small>
-                    </div>
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="display: none;">
-                        <svg class="etm-icon etm-icon-sm">
-                            <use xlink:href="#icon-delete"></use>
-                        </svg>
-                    </button>
+<div class="container  top_margin ">
+    <div class="row">
+        <div class="col-12 layout_shift_spacer">
+            <div class="row">
+                <div class="loading_food col-8">
+                    <a href="/" class="btn btn-outline-secondary">← Back to the meal planner</a>
                 </div>
-                <div class="modal-body" id="food_object_modal_body">
-                    <div class="recipe_modal">
-                        <div class="food_upload_image">
-                            <div class="row align-items-center">
-                                <div class="col-12 col-sm-6 col-md-3">
-                                    <div class="image_padding cropped_image">
-                                        <img class="lazyload" th:src="@{${'/img/' + recipe.image}}" width="120">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-sm-6 ">
-                                    <div class="row text-small text-medium-md">
-                                        <div class="col-6 small_top_spacer">
-                                            <svg class="etm-icon etm-icon-sm no-pointer">
-                                                <use xlink:href="#icon-mortar-pestle"></use>
-                                            </svg>
-                                            1 mins to prep
-                                        </div>
-                                        <div class="col-6 small_top_spacer">
-                                            <svg class="etm-icon etm-icon-sm no-pointer">
-                                                <use xlink:href="#icon-frying-pan"></use>
-                                            </svg>
-                                            <p th:text="${recipe.cooktime}">
-                                        </div>
-                                    </div>
-                                    <div class="row modal_recipe_servings small_top_spacer">
-                                        <div class="col-12">
-                                            Amount:
-                                            <input class="modal_amount_input amount_input" type="text" value="1" style="width: 33.2875px; min-width: 33.2875px; max-width: 33.2875px;">
-
-                                            <select class="food_units_selector"><option value="0">grams</option><option value="1" selected="">serving</option></select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-3">
-                                    <div class="row text-md-right food_modal_buttons">
-                                        <div class="col-12 col-md-12 small_top_spacer">
-                                            <i class="fa fa-question-circle-o personalize_tooltip text-muted" aria-hidden="true" data-original-title="" title=""></i>
-                                            <a href="/user/register-free-account">Create an account to personalize
-                                                recipes <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <!-- Recipe Search Bar -->
+                <div class="col-4 form-group" id="search-bar">
+                    <input class="search-query form-control food-input" placeholder="Search recipes database..." id="search_query" type="text" style="margin-top:20px; width: 100%;">
+                </div>
+                <br>
+                <div class="recipe_view content_container col-12 col-md-10 offset-md-1" style="padding-bottom: 20px"><div id="recipe_viewer" class="div">
+                    <div class="modal-header">
+                        <div class="col text-center">
+                            <h2 class="modal-title">Cuban Green Soup</h2>
+                            <div class="pb-2"></div>
+                            <small class="submitted_by_text">
+                                submitted by
+                                curly_q
+                            </small>
                         </div>
-
-
-                        <div class="food_control_panel">
-                            <div class="row justify-content-center">
-                                <div class="col-12 col-md-10">
-                                    <div class="row">
-                                        <div class="col-auto food_thumbs">
-                                            <div class="control_button thumb_icon thumb_icon_sm thumbs_up inactive" data-original-title="" title="">
-                                                <svg class="etm-icon etm-icon-sm">
-                                                    <use class="icon-active" xlink:href="#icon-thumbs-up-green"></use>
-                                                    <use class="icon-default" xlink:href="#icon-thumbs-up-black"></use>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                        <div class="col-auto food_thumbs">
-                                            <div class="control_button thumb_icon thumb_icon_sm thumbs_down inactive" data-original-title="" title="">
-                                                <svg class="etm-icon etm-icon-sm">
-                                                    <use class="icon-active" xlink:href="#icon-thumbs-down-red"></use>
-                                                    <use class="icon-default" xlink:href="#icon-thumbs-down-black"></use>
-                                                </svg>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-auto">
-                                            <div class="control_button favorite_food">
-                                                <svg class="etm-icon etm-icon-sm favorite_icon inactive" data-original-title="" title="">
-                                                    <use class="icon-active" xlink:href="#icon-star-filled"></use>
-                                                    <use class="icon-default" xlink:href="#icon-star"></use>
-                                                </svg>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-auto">
-                                            <div class="control_button recurring_icon_modal" data-original-title="" title="">
-                                                <svg class="etm-icon etm-icon-sm">
-                                                    <use xlink:href="#icon-pin"></use>
-                                                </svg>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-auto hide_when_static" style="display: none;">
-                                            <div class="control_button food_refresh_btn" data-original-title="" title="">
-                                                <svg class="etm-icon etm-icon-sm">
-                                                    <use xlink:href="#icon-refresh3"></use>
-                                                </svg>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-auto hide_when_static" style="display: none;">
-                                            <div class="control_button food_delete_icon" data-original-title="" title="">
-                                                <svg class="etm-icon etm-icon-sm">
-                                                    <use xlink:href="#icon-trash-2"></use>
-                                                </svg>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-auto">
-
-                                            <a class="control_button add_to_plan" href="/meal-planner/">
-                                                <svg class="etm-icon etm-icon-sm add_to_plan_icon inactive" data-original-title="" title="">
-                                                    <use class="icon-add-list" xlink:href="#icon-add-list"></use>
-                                                </svg>
-                                            </a>
-
-                                        </div>
-
-                                        <div class="col-auto d-none d-sm-block">
-                                            <div class="control_button copy_permalink" data-original-title="" title="">
-                                                <svg class="etm-icon etm-icon-sm">
-                                                    <use xlink:href="#icon-link"></use>
-                                                </svg>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true" style="display: none;">
+                            <svg class="etm-icon etm-icon-sm">
+                                <use xlink:href="#icon-delete"></use>
+                            </svg>
+                        </button>
                     </div>
-
-
-                    <div class="recipe_info">
-
-                        <div class="ingredients_container">
-
-                            <div class="ingredients_header">
-                                <div class="ingredients_scale_options row small_top_spacer small_bottom_spacer">
-                                    <div class="col-12 recipe_scale_div small_top_spacer">
-                                        <form class="form-inline">
-                                            <label class="mr-sm-2" for="recipe_scale_selector">Recipe scaled to:</label>
-
-
-                                            <select class="recipe_scale_selector form-control" id="recipe_scale_selector">
-
-
-                                                <option value="scaled_servings">
-                                                    Amount to eat
-                                                    (1 serving)
-                                                </option>
-                                                <option value="unscaled_servings" selected="">
-                                                    Original recipe
-                                                    (8 servings)
-                                                </option>
-                                            </select>
-                                        </form>
-
-
+                    <div class="modal-body" id="food_object_modal_body">
+                        <div class="recipe_modal">
+                            <div class="food_upload_image">
+                                <div class="row align-items-center">
+                                    <div class="col-12 col-sm-6 col-md-3">
+                                        <div class="image_padding cropped_image">
+                                            <img class="lazyload" src="https://images.eatthismuch.com/img/36618_elm333_786d9c50-0428-497c-b500-4594681f56f2.jpg" data-src="https://images.eatthismuch.com/img/36618_elm333_786d9c50-0428-497c-b500-4594681f56f2.jpg" data-action="zoom">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-sm-6 ">
+                                        <div class="row text-small text-medium-md">
+                                            <div class="col-6 small_top_spacer">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                1 mins to prep
+                                            </div>
+                                            <div class="col-6 small_top_spacer">
+                                               <i class="fa fa-leaf"></i>
+                                                30 mins to cook
+                                            </div>
+                                        </div>
+                                        <div class="row modal_recipe_servings small_top_spacer">
+                                            <div class="col-12">
+                                                Amount:
+                                                <input class="modal_amount_input amount_input" type="text" value="1" style="width: 33.2875px; min-width: 33.2875px; max-width: 33.2875px;">
+                                                <select class="food_units_selector"><option value="0">grams</option><option value="1" selected="">serving</option></select>
+                                            </div>
+                                        </div>
 
                                     </div>
-                                    <div class="col-12">
-                                        <div class="recipe_serving_printout long_serving_description"></div>
+                                    <div class="col-12 col-md-3">
+                                        <div class="row text-md-right food_modal_buttons">
+                                            <div class="col-12 col-md-12 small_top_spacer">
+                                                <i class="fa fa-question-circle-o personalize_tooltip text-muted" aria-hidden="true" data-original-title="" title=""></i>
+                                                <a href="/user/register-free-account">Create an account to personalize
+                                                    recipes <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-
-                                <div class="row">
-
-
-
-                                    <div class="col-12 col-md-8">
+                            </div>
+                            <div class="food_control_panel">
+                                <div class="row justify-content-center">
+                                    <div class="col-12 col-md-10">
                                         <div class="row">
-
-
-                                            <div class="downloading_ingredients_spinner col-12 text-center" style="display: none;">
-                                                <svg class="etm-icon etm-icon-md">
-                                                    <use xlink:href="#hungry-puck-loader"></use>
-                                                </svg>
+                                            <div class="col-auto food_thumbs">
+                                                <div class="control_button thumb_icon thumb_icon_sm thumbs_up inactive" data-original-title="" title="">
+                                                  <i class="fa fa-thumbs-up"></i>
+                                                </div>
                                             </div>
-
-
-                                            <div class="col-12 ingredients_box">
-                                                <ul class="ingredients_list collection-list" tabindex="0"><li class="diet_draggable" data-model-cid="c82" data-original-title="" title="">
-                                                    <div class="food_box ingredient_box col-12 read-only-ingredient">
-                                                        <div class="row food_object_row align-items-center no-wrap">
-                                                            <div class="food_image_column">
-                                                                <div class="food_image" style="background: url(https://images.eatthismuch.com/thmb/1743_RedHawk5_b6dba2ef-2914-4faa-bdfd-baceb08ac455.png) 50% 50% no-repeat;background-size:auto 50px;">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="food_details_column">
-
-                                                                <div class="food_name_column">
-                                                                    <div class="row">
-                                                                        <div class="food_name col-12">
-                                                                            <div class="print_name">Salt pork</div>
-                                                                            <div class="print_desc food_description">Pork, cured, raw</div>
-                                                                        </div>
-                                                                    </div>
-
-
-
-                                                                </div>
-
-                                                                <div class="food_amount_column">
-                                                                    <div class="row">
-                                                                        <div class="food_units col-12">
-
-                                                                            2 oz
-
-                                                                        </div>
-
-
-                                                                        <div class="gram_printout col-12">56.7 grams</div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div class="ingredient_buttons_col">
-
-
-
-                                                                <div class="ingredient_thumbs">
-                                                                    <div class="thumb_icon thumb_icon_sm thumbs_down inactive" data-id="/api/v1/ingredients/11005129/" title="Block recipes that have this ingredient">
-                                                                        <svg class="etm-icon etm-icon-sm">
-                                                                            <use class="icon-active" xlink:href="#icon-thumbs-down-red"></use>
-                                                                            <use class="icon-default" xlink:href="#icon-thumbs-down-black"></use>
-                                                                        </svg>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
-
-
-                                                </li><li class="diet_draggable" data-model-cid="c87" data-original-title="" title="">
-                                                    <div class="food_box ingredient_box col-12 read-only-ingredient">
-                                                        <div class="row food_object_row align-items-center no-wrap">
-                                                            <div class="food_image_column">
-                                                                <div class="food_image" style="background: url(https://images.eatthismuch.com/thmb/2042_erin_m_04c4fda5-abbc-46e7-9a98-a9983e0e85c0.png) 50% 50% no-repeat;background-size:auto 50px;">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="food_details_column">
-
-                                                                <div class="food_name_column">
-                                                                    <div class="row">
-                                                                        <div class="food_name col-12">
-                                                                            <div class="print_name">Onions</div>
-                                                                            <div class="print_desc food_description">Raw</div>
-                                                                        </div>
-                                                                    </div>
-
-
-
-                                                                </div>
-
-                                                                <div class="food_amount_column">
-                                                                    <div class="row">
-                                                                        <div class="food_units col-12">
-
-                                                                            1 cup, chopped
-
-                                                                        </div>
-
-
-                                                                        <div class="gram_printout col-12">160 grams</div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div class="ingredient_buttons_col">
-
-
-
-                                                                <div class="ingredient_thumbs">
-                                                                    <div class="thumb_icon thumb_icon_sm thumbs_down inactive" data-id="/api/v1/ingredients/11005130/" title="Block recipes that have this ingredient">
-                                                                        <svg class="etm-icon etm-icon-sm">
-                                                                            <use class="icon-active" xlink:href="#icon-thumbs-down-red"></use>
-                                                                            <use class="icon-default" xlink:href="#icon-thumbs-down-black"></use>
-                                                                        </svg>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
-
-
-                                                </li><li class="diet_draggable" data-model-cid="c94" data-original-title="" title="">
-                                                    <div class="food_box ingredient_box col-12 read-only-ingredient">
-                                                        <div class="row food_object_row align-items-center no-wrap">
-                                                            <div class="food_image_column">
-                                                                <div class="food_image" style="background: url(https://images.eatthismuch.com/images/food_icons_v3/soy.png) 50% 50% no-repeat;background-size:auto 50px;">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="food_details_column">
-
-                                                                <div class="food_name_column">
-                                                                    <div class="row">
-                                                                        <div class="food_name col-12">
-                                                                            <div class="print_name">Navy beans</div>
-                                                                            <div class="print_desc food_description">Mature seeds, canned</div>
-                                                                        </div>
-                                                                    </div>
-
-
-
-                                                                </div>
-
-                                                                <div class="food_amount_column">
-                                                                    <div class="row">
-                                                                        <div class="food_units col-12">
-
-                                                                            5 can (15 oz)
-
-                                                                        </div>
-
-
-                                                                        <div class="gram_printout col-12">2.1 kg</div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div class="ingredient_buttons_col">
-
-
-
-                                                                <div class="ingredient_thumbs">
-                                                                    <div class="thumb_icon thumb_icon_sm thumbs_down inactive" data-id="/api/v1/ingredients/11005131/" title="Block recipes that have this ingredient">
-                                                                        <svg class="etm-icon etm-icon-sm">
-                                                                            <use class="icon-active" xlink:href="#icon-thumbs-down-red"></use>
-                                                                            <use class="icon-default" xlink:href="#icon-thumbs-down-black"></use>
-                                                                        </svg>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
-
-
-                                                </li><li class="diet_draggable" data-model-cid="c98" data-original-title="" title="">
-                                                    <div class="food_box ingredient_box col-12 read-only-ingredient">
-                                                        <div class="row food_object_row align-items-center no-wrap">
-                                                            <div class="food_image_column">
-                                                                <div class="food_image" style="background: url(https://images.eatthismuch.com/images/food_icons_v3/carrot.png) 50% 50% no-repeat;background-size:auto 50px;">
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="food_details_column">
-
-                                                                <div class="food_name_column">
-                                                                    <div class="row">
-                                                                        <div class="food_name col-12">
-                                                                            <div class="print_name">Turnip greens and turnips</div>
-                                                                            <div class="print_desc food_description">Frozen, unprepared</div>
-                                                                        </div>
-                                                                    </div>
-
-
-
-                                                                </div>
-
-                                                                <div class="food_amount_column">
-                                                                    <div class="row">
-                                                                        <div class="food_units col-12">
-
-                                                                            2 package (10 oz)
-
-                                                                        </div>
-
-
-                                                                        <div class="gram_printout col-12">568 grams</div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div class="ingredient_buttons_col">
-
-
-
-                                                                <div class="ingredient_thumbs">
-                                                                    <div class="thumb_icon thumb_icon_sm thumbs_down inactive" data-id="/api/v1/ingredients/11005132/" title="Block recipes that have this ingredient">
-                                                                        <svg class="etm-icon etm-icon-sm">
-                                                                            <use class="icon-active" xlink:href="#icon-thumbs-down-red"></use>
-                                                                            <use class="icon-default" xlink:href="#icon-thumbs-down-black"></use>
-                                                                        </svg>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                            </div>
-                                                        </div>
-
-
-                                                    </div>
-
-
-                                                </li></ul>
-                                            </div>
-
-                                            <div class="col-12 amazon_fresh_ingredients pb-2">
-                                <span class="a-button a-spacing-base fresh-green-button" id="a-autoid-1">
-                                    <span class="a-button-inner a-inner-xsmall">
-                                        <span class="a-button-text" aria-hidden="true" id="a-autoid-1-announce">Order ingredients on AmazonFresh</span>
-                                    </span>
-                                </span>
-                                            </div>
-
-                                            <div class="col-12 top_spacer">
-                                                <small>
-                                                    Directions are based on the original recipe of
-                                                    8 servings
-                                                </small>
-                                            </div>
-
-                                            <div class="recipe_directions_list col-12">
-
-
-                                                <!-- Directions list -->
-
-                                                <div class="directions_list collection-list" tabindex="0"><li class="row" data-model-cid="c102">
-                                                    <div class="col-12 direction_border_col">
-                                                        <div class="row">
-                                                            <div class="col-12 col-md-2">Step 1</div>
-                                                            <div class="col-12 col-md-10">
-                                                                Place a stock pot or Dutch oven over medium heat. Fry the salt pork for a few minutes to release some liquid. Add onion, and saute until translucent. Stir in the navy beans and turnip greens. Bring to a boil, reduce heat to medium-low, and simmer for about 30 minutes. Serve with home made pepper vinegar and a side of cornbread for restaurant-style dining.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                </li></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-12 col-md-4 recipe_stats_div pt-2 pt-md-0">
-                                        <div class="cumulative_graph_header text-center">Percent calories from</div>
-                                        <div id="modal_cumulative_graph" style="padding: 0px;">
-                                            <canvas class="flot-base" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 160px; height: 160px;" width="200" height="200"></canvas><canvas class="flot-overlay" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 160px; height: 160px;" width="200" height="200"></canvas><span class="pieLabel" id="pieLabel0" style="position: absolute; top: 102px; left: 52.925px;"><div style="font-size:7pt;text-align:center;padding:2px;color:white;">Carbs<br>61%</div></span><span class="pieLabel" id="pieLabel1" style="position: absolute; top: 25px; left: 55.7062px;"><div style="font-size:7pt;text-align:center;padding:2px;color:white;">Protein<br>23%</div></span><span class="pieLabel" id="pieLabel2" style="position: absolute; top: 44px; left: 103.919px;"><div style="font-size:7pt;text-align:center;padding:2px;color:white;">Fat<br>16%</div></span></div>
-                                        <div id="modal_day_stats">
-                                            <div class="row">
-                                                <div class="col-12 nutrition-header text-center small_bottom_spacer">
-                                                    Recipe totals
+                                            <div class="col-auto food_thumbs">
+                                                <div class="control_button thumb_icon thumb_icon_sm thumbs_down inactive" data-original-title="" title="">
+                                                   <i class="fa fa-thumbs-down"></i>
                                                 </div>
                                             </div>
 
-                                            <div class="row justify-content-center">
-                                                <div class="col-8 col-md-10">
-                                                    <div class="stats_output">
-                                                        <div class="row calories-row">
-                                                            <div class="col-auto mr-auto">Calories</div>
-                                                            <div class="col-auto">3010</div>
-                                                        </div>
-                                                        <div class="row carbs-col">
-                                                            <div class="col-auto mr-auto pr-0">Carbs</div>
-                                                            <div class="col-auto pl-0">469g</div>
-                                                        </div>
-                                                        <div class="row fats-col">
-                                                            <div class="col-auto mr-auto">Fat</div>
-                                                            <div class="col-auto">56g</div>
-                                                        </div>
-                                                        <div class="row proteins-col">
-                                                            <div class="col-auto mr-auto">Protein</div>
-                                                            <div class="col-auto">179g</div>
-                                                        </div>
+                                            <div class="col-auto">
+                                                <div class="control_button favorite_food">
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
 
-                                                        <div class="row nutrient-row small_top_spacer">
-                                                            <div class="col-auto mr-auto">Fiber</div>
-                                                            <div class="col-auto">125g</div>
-                                                        </div>
+                                            <div class="col-auto">
+                                                <div class="control_button recurring_icon_modal" data-original-title="" title="">
+                                                    <i class="fa fa-thumb-tack">
+                                                    </i>
+                                                </div>
+                                            </div>
 
-                                                        <div class="row nutrient-row">
-                                                            <div class="col-auto mr-auto">Net carbs</div>
-                                                            <div class="col-auto">344g</div>
-                                                        </div>
+                                            <div class="col-auto hide_when_static" style="display: none;">
+                                                <div class="control_button food_refresh_btn" data-original-title="" title="">
 
-                                                        <div class="row nutrient-row small_top_spacer">
-                                                            <div class="col-auto mr-auto">Sodium</div>
-                                                            <div class="col-auto">11156mg</div>
-                                                        </div>
+                                                </div>
+                                            </div>
 
-                                                        <div class="row nutrient-row">
-                                                            <div class="col-auto mr-auto">Cholesterol</div>
-                                                            <div class="col-auto">49mg</div>
-                                                        </div>
+                                            <div class="col-auto hide_when_static" style="display: none;">
+                                                <div class="control_button food_delete_icon" data-original-title="" title="">
+                                                    <svg class="etm-icon etm-icon-sm">
+                                                        <use xlink:href="#icon-trash-2"></use>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <a class="control_button add_to_plan" href="/meal-planner/">
+                                                  <i class="fa fa-list"></i>
+                                                </a>
 
-                                                    </div>
-
-                                                    <button class="expand_modal_nutrition btn btn-sm btn-block btn-outline-secondary top_margin_small">
-                                                        Detailed Nutrition <i class="fa fa-chevron-down" aria-hidden="true"></i>
-                                                    </button>
-
-                                                    <div class="nutrition_info">
-                                                        <div class="stats_serving_info">Based on 8 serving (2910.9 grams)</div>
-                                                        <div class="add_micronutrients_here"><div class="micro_details_header">Detailed Nutrition Info:</div><strong>Fiber</strong>: 124.9g<div class="perc_daily_val">500%</div><br><strong>Sodium</strong>: 11155.7mg<div class="perc_daily_val">465%</div><br><strong>Potassium</strong>: 6860.4mg<div class="perc_daily_val">146%</div><br><strong>Cholesterol</strong>: 48.9mg<div class="perc_daily_val">N/A</div><br><div class="micro_details_header">Sugars</div><strong>Sugar</strong>: 12.5g<div class="perc_daily_val">N/A</div><br><strong>Sucrose</strong>: 1.5g<div class="perc_daily_val">N/A</div><br><strong>Glucose</strong>: 3.2g<div class="perc_daily_val">N/A</div><br><strong>Fructose</strong>: 2g<div class="perc_daily_val">N/A</div><br><strong>Lactose</strong>: 0g<div class="perc_daily_val">N/A</div><br><strong>Maltose</strong>: 0g<div class="perc_daily_val">N/A</div><br><strong>Galactose</strong>: 0g<div class="perc_daily_val">N/A</div><br><strong>Starch</strong>: 0g<div class="perc_daily_val">N/A</div><br><div class="micro_details_header">Fats</div><strong>Saturated fats</strong>: 19.2g<div class="perc_daily_val">N/A</div><br><strong>Monounsaturated fats</strong>: 22.4g<div class="perc_daily_val">N/A</div><br><strong>Polyunsaturated fats</strong>: 9.9g<div class="perc_daily_val">N/A</div><br><strong>Trans fats</strong>: 0g<div class="perc_daily_val">N/A</div><br><div class="micro_details_header">Fatty Acids</div><strong>Total omega 3</strong>: 0g<div class="perc_daily_val">N/A</div><br><strong>Total omega 6</strong>: 0g<div class="perc_daily_val">N/A</div><br><strong>ALA</strong>: 0g<div class="perc_daily_val">N/A</div><br><strong>DHA</strong>: 0g<div class="perc_daily_val">N/A</div><br><strong>EPA</strong>: 0g<div class="perc_daily_val">N/A</div><br><strong>DPA</strong>: 0g<div class="perc_daily_val">N/A</div><br><div class="micro_details_header">Vitamins and Minerals</div><strong>Caffeine</strong>: 0mg<div class="perc_daily_val">N/A</div><br><strong>Theobromine</strong>: 0mg<div class="perc_daily_val">N/A</div><br><strong>Calcium</strong>: 1686.9mg<div class="perc_daily_val">169%</div><br><strong>Choline</strong>: 593mg<div class="perc_daily_val">108%</div><br><strong>Copper</strong>: 4.7mg<div class="perc_daily_val">233%</div><br><strong>Fluoride</strong>: 1.7μg<div class="perc_daily_val">N/A</div><br><strong>Folate (B9)</strong>: 1582.1μg<div class="perc_daily_val">396%</div><br><strong>Iron</strong>: 49.2mg<div class="perc_daily_val">615%</div><br><strong>Lycopene</strong>: 0μg<div class="perc_daily_val">N/A</div><br><strong>Magnesium</strong>: 1121.6mg<div class="perc_daily_val">321%</div><br><strong>Manganese</strong>: 9.3mg<div class="perc_daily_val">466%</div><br><strong>Niacin</strong>: 14mg<div class="perc_daily_val">70%</div><br><strong>Phosphorus</strong>: 3061.1mg<div class="perc_daily_val">307%</div><br><strong>Retinol</strong>: 0μg<div class="perc_daily_val">N/A</div><br><strong>Riboflavin (B2)</strong>: 1.7mg<div class="perc_daily_val">103%</div><br><strong>Selenium</strong>: 132.7μg<div class="perc_daily_val">190%</div><br><strong>Thiamine</strong>: 3.2mg<div class="perc_daily_val">214%</div><br><strong>Alpha carotene</strong>: 0μg<div class="perc_daily_val">N/A</div><br><strong>Beta carotene</strong>: 1.5μg<div class="perc_daily_val">N/A</div><br><strong>Pantothenic acid</strong>: 4.7mg<div class="perc_daily_val">N/A</div><br><strong>Vit A</strong>: 1732.3μg<div class="perc_daily_val">193%</div><br><strong>Vit A IU</strong>: 34696.8IU<div class="perc_daily_val">N/A</div><br><strong>Vit B6</strong>: 2.9mg<div class="perc_daily_val">224%</div><br><strong>Vit B12</strong>: 0.3μg<div class="perc_daily_val">13%</div><br><strong>Vit C</strong>: 173.2mg<div class="perc_daily_val">289%</div><br><strong>Vit D</strong>: 0μg<div class="perc_daily_val">0%</div><br><strong>Vit D IU</strong>: 5.2IU<div class="perc_daily_val">N/A</div><br><strong>Vit D2</strong>: 0μg<div class="perc_daily_val">N/A</div><br><strong>Vit D3</strong>: 0μg<div class="perc_daily_val">N/A</div><br><strong>Vit E</strong>: 16.6mg<div class="perc_daily_val">83%</div><br><strong>Vit K</strong>: 62.3μg<div class="perc_daily_val">52%</div><br><strong>Zinc</strong>: 18mg<div class="perc_daily_val">121%</div><br><div class="micro_details_header">Amino Acids</div><strong>Tryptophan</strong>: 2.3g<div class="perc_daily_val">N/A</div><br><strong>Threonine</strong>: 6.4g<div class="perc_daily_val">N/A</div><br><strong>Isoleucine</strong>: 8.2g<div class="perc_daily_val">N/A</div><br><strong>Leucine</strong>: 15.1g<div class="perc_daily_val">N/A</div><br><strong>Lysine</strong>: 12.2g<div class="perc_daily_val">N/A</div><br><strong>Methionine</strong>: 2.3g<div class="perc_daily_val">N/A</div><br><strong>Cystine</strong>: 1.5g<div class="perc_daily_val">N/A</div><br><strong>Phenylalanine</strong>: 9.9g<div class="perc_daily_val">N/A</div><br><strong>Tyrosine</strong>: 4.4g<div class="perc_daily_val">N/A</div><br><strong>Valine</strong>: 10.2g<div class="perc_daily_val">N/A</div><br><strong>Arginine</strong>: 9.9g<div class="perc_daily_val">N/A</div><br><strong>Histidine</strong>: 4.7g<div class="perc_daily_val">N/A</div><br><strong>Alanine</strong>: 8.4g<div class="perc_daily_val">N/A</div><br><strong>Aspartic acid</strong>: 22.1g<div class="perc_daily_val">N/A</div><br><strong>Glutamic acid</strong>: 28.2g<div class="perc_daily_val">N/A</div><br><strong>Glycine</strong>: 7.3g<div class="perc_daily_val">N/A</div><br><strong>Proline</strong>: 9.9g<div class="perc_daily_val">N/A</div><br><strong>Serine</strong>: 10.5g<div class="perc_daily_val">N/A</div><br><strong>Hydroxyproline</strong>: 0g<div class="perc_daily_val">N/A</div><br></div>
-                                                        <!-- if we want to go back to the full nutrition table, render FoodNutritionTable.ejs here -->
-                                                    </div>
-
+                                            </div>
+                                            <div class="col-auto d-none d-sm-block">
+                                                <div class="control_button copy_permalink" data-original-title="" title="">
+                                                   <i class="fa fa-link"></i>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
                         </div>
-                        <div class="row justify-content-center big_top_spacer">
-                            <div class="col">
-            <span class="report_recipe_btn mock-link">
-                <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
-                Report a problem with this recipe
-            </span>
-                                •
-                                <a class="print_recipe" href="javascript:void(0);">
-                                    <i class="fa fa-print"></i> Print recipe
-                                </a>
-                            </div>
-                        </div>
-                        <div class="recipe_permalink_container">
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <button class="btn btn-outline-secondary copy_permalink" type="button" data-original-title="" title="">Copy Link <i class="fa fa-link" aria-hidden="true"></i>
-                                    </button>
+                        <hr>
+                                                    <!-- Directions list -->
+
+                                                    <div class="directions_list collection-list" tabindex="0"><li class="row" data-model-cid="c102">
+                                                        <div class="col-12 direction_border_col">
+                                                            <div class="row">
+                                                                <div class="col-12 col-md-2">Step 1</div>
+                                                                <div class="col-12 col-md-10">
+                                                                    Place a stock pot or Dutch oven over medium heat. Fry the salt pork for a few minutes to release some liquid. Add onion, and saute until translucent. Stir in the navy beans and turnip greens. Bring to a boil, reduce heat to medium-low, and simmer for about 30 minutes. Serve with home made pepper vinegar and a side of cornbread for restaurant-style dining.
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <input type="text" class="form-control recipe_permalink" readonly="" onclick="this.select();" value="https://www.eatthismuch.com/recipe/nutrition/cuban-green-soup,36618/">
                             </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div></div>
-        </div>
-
     </div>
-
-  </div>
-</div>
       <!-- scrip -->
       <script src="/js/jquery-3.2.1.min.js"></script>
       <script src="/js/popper.min.js"></script>
