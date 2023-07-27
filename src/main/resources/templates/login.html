@@ -15,15 +15,15 @@
   <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
 </head>
 <body style="background-color: #F9F9F9">
-<nav id="top_nav" class="navbar navbar-expand-md navbar-purple navbar-dark">
+<nav id="top_nav" class="navbar navbar-expand-md navbar-purple ">
   <div class="container">
     <a class="navbar-brand" href="/">
       <img src="/img/logo.png" height="76" width="90" alt=""/></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ETM_navbar" aria-controls="ETM_control" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler ml-auto custom-toggler na" type="button" data-toggle="collapse" data-target="#ETM_navbar" aria-controls="ETM_control" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div id="ETM_navbar" class="collapse navbar-collapse">
+    <div id="ETM_navbar" class="collapse navbar-collapse navbar-purple">
       <ul class="navbar-nav justify-content-md-center col-md">
         <li class="nav-item active"><a class="nav-link" href="/how-it-works/">How It Works</a></li>
         <li class="nav-item "><a class="nav-link" href="/food/browse/?type=recipe">Browse
@@ -35,7 +35,7 @@
       </ul>
       <form class="form text-center no-gutters">
         <div class="col-auto ">
-          <a class="btn btn-primary btn-sm mb-3 mt-1 " href="/user/register-free-account/" onclick="UrlFunctions.addNextUrlParameter(this)">Sign Up</a>
+          <a class="btn btn-primary btn-sm mb-3 mt-1 btn-orange" href="/user/register-free-account/" onclick="UrlFunctions.addNextUrlParameter(this)">Sign Up</a>
         </div>
         <a class="sign-in-link" href="/user/login/" onclick="UrlFunctions.addNextUrlParameter(this)">Already a member? Sign in.</a>
       </form>
@@ -54,9 +54,9 @@
     </div>
     <div class="row omb_socialButtons">
       <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-        <a rel="nofollow" href="/login/facebook/" class="d-block facebook_login_button text-center btn-primary btn-lg mb-3" onclick="UrlFunctions.addNextUrlParameter(this)">
+        <a rel="nofollow" href="/login/facebook/" class="d-block facebook_login_button text-center custom-btn-facebook btn-lg mb-3" onclick="UrlFunctions.addNextUrlParameter(this)">
           <i class="fa fa-facebook"></i> Sign in with <b>Facebook</b></a>
-        <a rel="nofollow" href="/login/google-oauth2/" class="d-block google_login_button text-center btn-danger btn-lg mb-3" onclick="UrlFunctions.addNextUrlParameter(this)">
+        <a rel="nofollow" href="/login/google-oauth2/" class="d-block google_login_button text-center custom-btn-danger btn-lg mb-3" onclick="UrlFunctions.addNextUrlParameter(this)">
           <i class="fa fa-google"></i> Sign in with <b>Google</b></a>
         <a rel="nofollow" href="/login/apple-id/" class="d-block apple_login_button text-center btn-dark btn-lg" onclick="UrlFunctions.addNextUrlParameter(this)">
           <i class="fa fa-apple"></i> Sign in with <b>Apple</b></a>
@@ -86,7 +86,7 @@
           </div>
           <br>
           <input type="hidden" name="next" value="">
-          <button class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" type="submit">Log in</button>
+          <button class="btn btn-primary btn-block fa-lg btn-orange mb-3" type="submit">Log in</button>
         </form>
       </div>
     </div>

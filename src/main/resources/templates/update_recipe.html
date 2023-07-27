@@ -12,7 +12,6 @@
     <h1>Recipe and Food</h1>
     <hr>
     <h2>Update recipe</h2>
-
     <form action="#" th:action="@{/saveRecipe}" th:object="${recipe}" method="POST">
 
         <!-- Add hidden form field to handle update -->
@@ -27,7 +26,7 @@
         <button type="submit" class="btn btn-info col-2"> Update recipe</button>
     </form>
     <hr>
-    <a th:href="@{/FoodBrowser.html}"> Back to recipe List</a>
+    <a th:href="@{/FoodBrowser}"> Back to recipe List</a>
 </div>
 </body>
 

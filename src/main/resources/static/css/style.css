@@ -34,7 +34,7 @@ h1, h2, h3, h4, h5 {
   outline: none;
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
-  border-radius: 0px !important;
+  border-radius: 4px !important;
 }
 
 .btn:focus, .btn:active, .form-control:focus, .form-control:active {
@@ -166,12 +166,23 @@ header .navbar-brand span {
   }
 }
 
+.custom-btn-facebook{
+  background-color: #007bff;
+}
+.custom-btn-danger{
+  background-color: #dc3545;;
+}
 header .navbar {
   background: black !important;
   padding-top: .5rem;
   padding-bottom: .5rem;
 }
-
+.navbar-purple li a, .orange_link {
+  color: #ff8456;
+}
+.navbar-purple li a:hover {
+  color: #ee5428;
+}
 @media (min-width: 768px) {
   header .navbar {
     padding-top: 0;
@@ -180,12 +191,28 @@ header .navbar {
     position: relative;
   }
 }
+.btn-orange, .static-btn-orange {
+  color: #fff;
+  background-color: #F0754F;
+  border-color: #e36f4b;
+  border-radius: 3px;
+}
+.btn-lg {
+   font-size: 18px;
+   letter-spacing: 0.25px;
+ }
+.custom-toggler.navbar-toggler {
+  border-color: rgb(236, 104, 25);
+}
+.custom-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(236, 104, 25, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 
+}
 header .navbar .nav-link {
   padding: 1.7rem 1rem;
   outline: none !important;
   font-size: 1rem;
-  color: black !important;
+  color: #ff8456 !important;
 }
 
 @media (max-width: 1199px) {
@@ -195,7 +222,7 @@ header .navbar .nav-link {
 }
 
 header .navbar .nav-link.active {
-  color: #ff7404 !important;
+  color: #ee5428 !important;
 }
 
 header .navbar .dropdown-menu {
@@ -502,7 +529,11 @@ header .navbar .cta-btn a:hover {
 .cropped_image img, .cropped_editor_image img{
   max-width: 100%;
 }
-
+.text-small {
+  font-size: 13px;
+  font-weight: normal;
+  letter-spacing: 0.3px;
+}
 .image_padding {
   /*display: inline-block;
   vertical-align: top;
@@ -537,9 +568,52 @@ header .navbar .cta-btn a:hover {
     width: 50%;
   }
 }
+@media (min-width: 768px) {
+  /*Medium sizes*/
+  .header-xl-md {
+    font-size: 38px;
+    letter-spacing: 1px;
+  }
 
+  .header-large-md {
+    font-size: 28px;
+    letter-spacing: 0.5px;
+  }
+
+  .header-medium-md {
+    font-size: 22px;
+    letter-spacing: 0.8px;
+  }
+
+  .text-large-md {
+    font-size: 18px;
+    letter-spacing: 0.5px;
+  }
+
+  .text-medium-md {
+    font-size: 16px;
+    line-height: 1.38;
+    letter-spacing: 0.5px;
+  }
+
+  .text-label-large-md {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+  }
+
+  .text-small-md {
+    font-size: 13px;
+    font-weight: normal;
+    letter-spacing: 0.3px;
+  }
+}
 .sched h3, .blog h3 {
   font-size: 20px;
+}
+.small_top_spacer {
+  padding-top: 10px;
 }
 
 .sched .text, .blog .text {
@@ -1099,7 +1173,26 @@ header .navbar .cta-btn a:hover {
     float: none !important;
   }
 }
+.food_control_panel {
+  text-align: center;
+  margin-top: 10px;
+}
+.food_thumbs, .ingredient_thumbs {
+  flex: 0 0 auto;
+}
+.inactive:hover {
+  opacity: 0.5;
+}
+.thumb_icon {
+  cursor: pointer;
+  opacity: 0.5;
+  display: inline-block;
+}
 
+.food_thumbs.row {
+  margin: 0;
+  padding: 0.25rem 1.5rem;
+}
 .form-wrap {
   background: #fff;
   padding: 50px;
@@ -1351,16 +1444,47 @@ header .navbar .cta-btn a:hover {
   border-radius: 0;
   border: none;
 }
+.food_units_selector {
+  background: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  /* needed for Firefox: */
+  overflow: hidden;
+  /*width: 120%;*/
+  /*max-width: 90%;*/
+
+  flex: 0 1 auto;
+  min-width: 60px;
+  max-width: 160px;
+  /*margin-left: 3px;*/
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  background-image: none;
+  background-clip: padding-box;
+}
 
 #modalAppointment .modal-body, #modalAppointment .modal-footer {
   padding: 40px;
 }
+.amount_input {
+  flex: 0 0 5px;
+}
+.modal_amount_input{
+  padding: 6px 10px !important;
+}
 
+.modal_recipe_servings .food_units_selector {
+  appearance: menulist-button;
+  -webkit-appearance: menulist;
+  -moz-appearance: menulist;
+}
 @media (max-width: 991px) {
   .img-md-fluid {
     max-width: 100%;
   }
 }
+
 
 .site-footer {
   position: relative;
@@ -1680,7 +1804,9 @@ header .navbar .cta-btn a:hover {
 .modal-header {
   align-items: flex-start;
 }
-
+.recipe_modal {
+  /* padding: 40px; */
+}
 .top-slant-white:before {
   content: "";
   width: 100%;

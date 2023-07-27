@@ -13,6 +13,7 @@ public class RecipeController {
 
     @Autowired
     private RecipeService recipeService;
+
     @GetMapping("/FoodBrower")
     public String viewHomepage(Model model){
         model.addAttribute("listrecipes",recipeService.getRecipe());

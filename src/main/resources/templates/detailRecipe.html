@@ -25,19 +25,19 @@
 
     <div id="ETM_navbar" class="collapse navbar-collapse">
       <ul class="navbar-nav justify-content-md-center col-md">
-        <li class="nav-item active"><a class="nav-link" href="/how-it-works/">How It Works</a></li>
-        <li class="nav-item "><a class="nav-link" href="/food/browse/?type=recipe">Browse
+        <li class="nav-item"><a class="nav-link" href="/how-it-works/">How It Works</a></li>
+        <li class="nav-item"><a class="nav-link" href="/food/browse/?type=recipe">Browse
           Foods</a></li>
-        <li class="nav-item "><a class="nav-link" href="/diet-plan/">Supported Diets</a>
+        <li class="nav-item"><a class="nav-link" href="/diet-plan/">Supported Diets</a>
         </li>
-        <li class="nav-item "><a class="nav-link" href="/professionals/">For Professionals</a>
+        <li class="nav-item"><a class="nav-link" href="/professionals/">For Professionals</a>
         </li>
       </ul>
       <form class="form text-center no-gutters">
         <div class="col-auto ">
           <a class="btn btn-primary btn-sm mb-3 mt-1 " href="/user/register-free-account/" onclick="UrlFunctions.addNextUrlParameter(this)">Sign Up</a>
         </div>
-        <a class="sign-in-link" href="/user/login/" onclick="UrlFunctions.addNextUrlParameter(this)">Already a member? Sign in.</a>
+        <a class="sign-in-link" href="/login" onclick="UrlFunctions.addNextUrlParameter(this)">Already a member? Sign in.</a>
       </form>
     </div>
   </div>
@@ -54,10 +54,10 @@
                     <input class="search-query form-control food-input" placeholder="Search recipes database..." id="search_query" type="text" style="margin-top:20px; width: 100%;">
                 </div>
                 <br>
-                <div class="recipe_view content_container col-12 col-md-10 offset-md-1" style="padding-bottom: 20px"><div id="recipe_viewer" class="div">
+                <div class="recipe_view content_container col-12 col-md-10 offset-md-1" style="padding-bottom: 30px"><div id="recipe_viewer" class="div">
                     <div class="modal-header">
                         <div class="col text-center">
-                            <h2 class="modal-title">Cuban Green Soup</h2>
+                            <h2 class="modal-title" th:text="${recipe.title}"></h2>
                             <div class="pb-2"></div>
                             <small class="submitted_by_text">
                                 submitted by
@@ -76,7 +76,7 @@
                                 <div class="row align-items-center">
                                     <div class="col-12 col-sm-6 col-md-3">
                                         <div class="image_padding cropped_image">
-                                            <img class="lazyload" src="https://images.eatthismuch.com/img/36618_elm333_786d9c50-0428-497c-b500-4594681f56f2.jpg" data-src="https://images.eatthismuch.com/img/36618_elm333_786d9c50-0428-497c-b500-4594681f56f2.jpg" data-action="zoom">
+                                            <img class="lazyload" th:src="@{${'/img/' + recipe.image}}"/>
                                         </div>
                                     </div>
                                     <div class="col-12 col-sm-6 ">
@@ -86,8 +86,7 @@
                                                 1 mins to prep
                                             </div>
                                             <div class="col-6 small_top_spacer">
-                                               <i class="fa fa-leaf"></i>
-                                                30 mins to cook
+                                               <i class="fa fa-leaf"></i><p  th:text="${recipe.cooktime} + 'minute'" style="display: inline;"></p>
                                             </div>
                                         </div>
                                         <div class="row modal_recipe_servings small_top_spacer">
@@ -97,7 +96,6 @@
                                                 <select class="food_units_selector"><option value="0">grams</option><option value="1" selected="">serving</option></select>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="col-12 col-md-3">
                                         <div class="row text-md-right food_modal_buttons">
@@ -111,29 +109,27 @@
                                 </div>
                             </div>
                             <div class="food_control_panel">
-                                <div class="row justify-content-center">
+                                <div class="row justify-content-center" style=" margin-top: 30px;">
                                     <div class="col-12 col-md-10">
                                         <div class="row">
                                             <div class="col-auto food_thumbs">
                                                 <div class="control_button thumb_icon thumb_icon_sm thumbs_up inactive" data-original-title="" title="">
-                                                  <i class="fa fa-thumbs-up"></i>
+                                                  <i class="fa fa-thumbs-up" style="font-size: larger"></i>
                                                 </div>
                                             </div>
                                             <div class="col-auto food_thumbs">
                                                 <div class="control_button thumb_icon thumb_icon_sm thumbs_down inactive" data-original-title="" title="">
-                                                   <i class="fa fa-thumbs-down"></i>
+                                                   <i class="fa fa-thumbs-down" style="font-size: larger"></i>
                                                 </div>
                                             </div>
-
                                             <div class="col-auto">
                                                 <div class="control_button favorite_food">
-                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star" style="font-size: larger"></i>
                                                 </div>
                                             </div>
-
                                             <div class="col-auto">
                                                 <div class="control_button recurring_icon_modal" data-original-title="" title="">
-                                                    <i class="fa fa-thumb-tack">
+                                                    <i class="fa fa-thumb-tack"style="font-size: larger">
                                                     </i>
                                                 </div>
                                             </div>
@@ -153,13 +149,13 @@
                                             </div>
                                             <div class="col-auto">
                                                 <a class="control_button add_to_plan" href="/meal-planner/">
-                                                  <i class="fa fa-list"></i>
+                                                  <i class="fa fa-list" style="font-size: larger"></i>
                                                 </a>
 
                                             </div>
                                             <div class="col-auto d-none d-sm-block">
                                                 <div class="control_button copy_permalink" data-original-title="" title="">
-                                                   <i class="fa fa-link"></i>
+                                                   <i class="fa fa-link" style="font-size: larger"></i>
                                                 </div>
                                             </div>
                                         </div>
