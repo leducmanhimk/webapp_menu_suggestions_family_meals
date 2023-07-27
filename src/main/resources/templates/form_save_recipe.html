@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>new Recipe</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800" rel="stylesheet">
+    <link rel="stylesheet" href="/css/animate.css">
+    <link rel="stylesheet" href="/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/css/aos.css">
+    <link rel="stylesheet" href="/css/magnific-popup.css">
+    <link rel="stylesheet" href="/fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/fonts/flaticon/font/flaticon.css">
+</head>
+<body>
+<nav id="top_nav" class="navbar navbar-expand-md navbar-purple ">
+    <div class="container">
+        <a class="navbar-brand" href="/">
+            <img src="/img/logo.png" height="76" width="90" alt=""/></a>
+        <button class="navbar-toggler ml-auto custom-toggler na" type="button" data-toggle="collapse" data-target="#ETM_navbar" aria-controls="ETM_control" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div id="ETM_navbar" class="collapse navbar-collapse navbar-purple">
+            <ul class="navbar-nav justify-content-md-center col-md">
+                <li class="nav-item active"><a class="nav-link" href="/how-it-works/">How It Works</a></li>
+                <li class="nav-item "><a class="nav-link" href="/food/browse/?type=recipe">Browse
+                    Foods</a></li>
+                <li class="nav-item "><a class="nav-link" href="/diet-plan/">Supported Diets</a>
+                </li>
+                <li class="nav-item "><a class="nav-link" href="/professionals/">For Professionals</a>
+                </li>
+            </ul>
+            <form class="form text-center no-gutters">
+                <div class="col-auto ">
+                    <a class="btn btn-primary btn-sm mb-3 mt-1 btn-orange" href="/user/register-free-account/" onclick="UrlFunctions.addNextUrlParameter(this)">Sign Up</a>
+                </div>
+                <a class="sign-in-link" href="/user/login/" onclick="UrlFunctions.addNextUrlParameter(this)">Already a member? Sign in.</a>
+            </form>
+        </div>
+    </div>
+</nav>
+    <div class="container">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Edit recipe</h4>
+                <button class="btn btn-outline-secondary">
+                    Cancel edits
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="recipe_modal modal-body" id="food_object_modal_body">
+                    <div class="recipe_info">
+                        <div class="recipe_info_container">
+                            <form class="form-horizontal" th:action="@{/saveRecipe}" th:object="${recipe}"  method="POST">
+                            <fieldset>
+                                <div class="form-group row image_upload_group">
+                                    <label class="col-12 col-sm-4 col-md-3 offset-md-1 col-form-label">Image</label>
+                                    <div class="col-12 recipe_upload_image col-sm-8">
+                                        <div class="row">
+                                            <div class="col-12 col-md-6">
+                                                <div class="cropped_editor_image">
+                                                    <img style="width: 100%;max-height:350px;" src="https://images.eatthismuch.com/images/recipe_image_placeholder.jpg">
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <div class="js-fileapi-wrapper" style="display: inline-block;">
+                                                    <div class="js-browse">
+                                                        <!--<span class="btn-txt">Upload an image (optional)</span>-->
+                                                        <input type="file" th:field="*{image}" name="filedata" id="recipe_files" class="hidden" accept="image/*">
+                                                    </div>
+                                                    <div class="js-upload" style="display: none;">
+                                                        <div class="progress progress-success">
+                                                            <div class="js-progress bar"></div>
+                                                        </div>
+                                                        <span class="btn-txt">Uploading</span>
+                                                    </div>
+                                                    <div class="text-muted">Optional</div>
+                                                    <label class="btn btn-outline-success" for="recipe_files">
+                                                        <i class="fa fa-camera" aria-hidden="true"></i><br>
+                                                        Upload an image
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <span class="glyphicon glyphicon-question-sign image_upload_tooltip" data-original-title="" title=""></span>
+                                    </div>
+                                </div>
+                                <div class="form-group row food_name import_group">
+                                    <label for="recipe-title" class="col-12 col-sm-4 col-md-3 offset-md-1 col-form-label">Recipe
+                                        title</label>
+                                    <div class="col-12 col-sm-8 col-md-6">
+                                        <input id="recipe-title" th:field="*{title}" maxlength="100" type="text" name="food_name" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row non-import import_group">
+                                    <label for="recipe-description" class="col-12 col-sm-4 col-md-3 offset-md-1 col-form-label">Description</label>
+                                    <div class="col-12 col-sm-8 col-md-6">
+                                        <input id="recipe-description" th:field="*{description}" maxlength="400" type="text" name="description" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group row prep_time import_group">
+                                    <label for="prep-time-input" class="col-12 col-sm-4 col-md-3 offset-md-1 col-form-label">Prep
+                                        time</label>
+                                    <div class="col-4 col-sm-4 col-md-2" data-editors="prep_time" id="prep-time-input">
+                                        <input id="c4735_prep_time" th:field="*{preptime}"  class="form-control" name="prep_time" max="32767" min="0" type="number" step="any">
+                                    </div>
+                                    <div class="recipe_input_label">minutes</div>
+                                </div>
+                                <div class="form-group row cook_time import_group">
+                                    <label for="cook-time-input" class="col-12 col-sm-4 col-md-3 offset-md-1 col-form-label">Cook
+                                        time</label>
+                                    <div class="col-4 col-sm-4 col-md-2" data-editors="cook_time" id="cook-time-input">
+                                        <input id="c4735_cook_time" th:field="*{cooktime}" class="form-control" name="cook_time" max="32767" min="0" type="number" step="any">
+                                    </div>
+                                    <div class="recipe_input_label">minutes</div>
+                                </div>
+                                <div class="form-group row non-import import_group">
+                                    <label for="category-input" class="col-12 col-sm-4 col-md-3 offset-md-1 col-form-label">Category</label>
+                                    <div class="col-12 col-sm-8 col-md-6" data-editors="category_id" id="category-input">
+                                        <select id="c4735_category_id" th:field="*{categories}" class="form-control" name="category_id">
+                                            <option value="1">Appetizers</option>
+                                            <option value="2">Breakfast foods</option>
+                                            <option value="3">Desserts</option>
+                                            <option value="4">Drinks</option>
+                                            <option value="5">Mostly meat</option>
+                                            <option value="6">Protein shakes</option>
+                                            <option value="7">Salads</option>
+                                            <option value="8">Sandwiches</option>
+                                            <option value="9">Pasta</option>
+                                            <option value="10">Soups</option>
+                                            <option selected="" value="11">Other</option>
+                                        </select></div>
+                                </div>
+                                <div class="form-group row non-import import_group">
+                                    <label for="main-dish-input" class="col-12 col-sm-4 col-md-3 offset-md-1 col-form-label">Main
+                                        dish</label>
+                                    <div class="col-12 col-sm-8 col-md-6" th:field="*{maindish}" data-editors="main_dish" id="main-dish-input">
+                                        <div id="c4735_main_dish" class="btn-group btn-group-toggle" name="main_dish" data-toggle="buttons">
+                                            <label for="c4735_main_dish-0" class="btn btn-selector-primary">
+                                                <input type="radio" name="main_dish" value="false" id="c4735_main_dish-0">Side dish</label>
+                                            <label for="c4735_main_dish-1" class="btn btn-selector-primary active"><input type="radio" name="main_dish" value="true" id="c4735_main_dish-1" checked="">Main dish</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                                <div class="recipe_directions_list">
+                                    <!-- Directions list -->
+                                    <div class="medium_header">Directions</div>
+                                    <button class="add_direction btn btn-outline-secondary" style="margin-left:20px;"><i class="fa fa-plus" aria-hidden="true"></i>
+                                        Add a direction
+                                    </button>
+                                    <table class="directions_list table collection-list ui-sortable" tabindex="0">
+                                        <tbody><tr class="table" data-model-cid="c4817" style="" data-original-title="" title="">
+                                            <td>
+                                                <button class="delete_direction btn btn-outline-secondary btn-sm">
+                                                    <i class="fa fa-times" aria-hidden="true">
+                                                    </i></button>
+                                            </td>
+                                            <td class="directions_text">
+                                                <fieldset>
+                                                    <div>
+                                                        <textarea  th:field="*{directions}" class="form-control" type="textarea" style="height: 60px;"></textarea>
+                                                    </div>
+                                                </fieldset>
+                                            </td>
+                                            <td class="drag_handle"><i class="fa fa-arrows-v" aria-hidden="true"></i></td>
+                                        </tr></tbody>
+                                    </table>
+                                    <!-- <table id="recipe_directions_list0" class="table table-bordered"></table> -->
+                                </div>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-outline-secondary cancel_edits">Cancel edits</button>
+                    <button class="save_recipe btn btn-primary" type="submit" >Save recipe</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+            <!-- scrip -->
+            <script src="/js/jquery-3.2.1.min.js"></script>
+            <script src="/js/popper.min.js"></script>
+            <script src="/js/bootstrap.min.js"></script>
+            <script src="/js/owl.carousel.min.js"></script>
+            <script src="/js/jquery.waypoints.min.js"></script>
+            <script src="/js/aos.js"></script>
+            <script src="/js/jquery.magnific-popup.min.js"></script>
+            <script src="/js/magnific-popup-options.js"></script>
+            <script src="/js/main.js"></script>
+</body>
+</html>

@@ -20,12 +20,12 @@ public class RecipeController {
         return "FoodBrowser";
     }
 
-    @GetMapping("/showNewRecipeform")
+    @GetMapping("/newrecipe")
     public String showNewRecipeForm(Model model) {
         // create model attribute to bind form data
         Recipe recipe = new Recipe();
         model.addAttribute("recipe", recipe);
-        return "new_recipe";
+        return "form_save_recipe";
     }
 
     @PostMapping("/saveRecipe")

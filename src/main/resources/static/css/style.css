@@ -40,7 +40,18 @@ h1, h2, h3, h4, h5 {
 .btn:focus, .btn:active, .form-control:focus, .form-control:active {
   outline: none;
 }
-
+.model-content{
+  border-radius: 10px;
+}
+select.form-control:not([size]):not([multiple]) {
+  height: auto!important;
+}
+.medium_header {
+  font-size: 28px;
+  font-weight: 200;
+  line-height: 100px;
+  display: inline-block;
+}
 .form-control {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;

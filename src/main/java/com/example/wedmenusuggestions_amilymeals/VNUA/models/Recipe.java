@@ -1,6 +1,7 @@
 package com.example.wedmenusuggestions_amilymeals.VNUA.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.Type;
 
 @Entity
 @Table(name = "recipe")
@@ -25,13 +26,26 @@ public class Recipe {
     @Column(name = "categories",length = 20)
     private String categories;
 
-    public Recipe(Long id, String title, int cooktime, String description, String image, String categories) {
+    @Column(name = "preptime")
+    private  int preptime;
+
+    @Column(name = "directions")
+    @Lob
+    private String directions;
+
+    @Column(name = "maindish",length = 10)
+    private String maindish;
+
+    public Recipe(Long id, String title, int cooktime, String description, String image, String categories, int preptime, String directions, String maindish) {
         Id = id;
         this.title = title;
         this.cooktime = cooktime;
         this.description = description;
         this.image = image;
         this.categories = categories;
+        this.preptime = preptime;
+        this.directions = directions;
+        this.maindish = maindish;
     }
 
     public Recipe() {
@@ -84,5 +98,29 @@ public class Recipe {
 
     public void setCategories(String categories) {
         this.categories = categories;
+    }
+
+    public int getPreptime() {
+        return preptime;
+    }
+
+    public void setPreptime(int preptime) {
+        this.preptime = preptime;
+    }
+
+    public String getDirections() {
+        return directions;
+    }
+
+    public void setDirections(String directions) {
+        this.directions = directions;
+    }
+
+    public String getMaindish() {
+        return maindish;
+    }
+
+    public void setMaindish(String maindish) {
+        this.maindish = maindish;
     }
 }
