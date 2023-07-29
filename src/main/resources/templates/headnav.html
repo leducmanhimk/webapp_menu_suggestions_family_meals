@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>header</title>
+</head>
+<body>
+<nav id="top_nav" class="navbar navbar-expand-md navbar-purple" th:fragment="header">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <img src="/img/logo.png" height="76" width="90" alt=""/></a>
+    <button class="navbar-toggler ml-auto custom-toggler na" type="button" data-toggle="collapse" data-target="#ETM_navbar" aria-controls="ETM_control" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div id="ETM_navbar" class="collapse navbar-collapse navbar-purple">
+      <ul class="navbar-nav justify-content-md-center col-md">
+        <li class="nav-item active"><a class="nav-link" href="/how-it-works/">How It Works</a></li>
+        <li class="nav-item "><a class="nav-link" href="/food/browse/?type=recipe">Browse
+          Foods</a></li>
+        <li class="nav-item "><a class="nav-link" href="/diet-plan/">Supported Diets</a>
+        </li>
+        <li class="nav-item "><a class="nav-link" href="/professionals/">For Professionals</a>
+        </li>
+      </ul>
+      <form class="form text-center no-gutters">
+        <div class="col-auto ">
+          <a class="btn btn-primary btn-sm mb-3 mt-1 btn-orange" href="/user/register-free-account/" onclick="UrlFunctions.addNextUrlParameter(this)">Sign Up</a>
+        </div>
+        <a class="sign-in-link" href="/user/login/" onclick="UrlFunctions.addNextUrlParameter(this)">Already a member? Sign in.</a>
+      </form>
+    </div>
+  </div>
+</nav>
+</body>
+</html>

@@ -18,18 +18,23 @@ public class Recipe {
     private String title;
 
     @Column(name = "cooktime")
+
     private int cooktime;
 
     @Column(name = "description")
+    @NotBlank(message = "truường dữ liệu không được để trống")
     private String description;
 
     @Column(name = "image")
+
     private String image;
 
     @Column(name = "categories",length = 20)
+
     private String categories;
 
     @Column(name = "preptime" ,length = 5)
+
     private  int preptime;
 
     @Column(name = "directions",columnDefinition = "TEXT")
