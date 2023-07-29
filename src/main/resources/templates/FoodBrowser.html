@@ -56,7 +56,8 @@
     </div>
     <div class="row my-4">
         <div class="col-12 col-md-6 col-lg-4">
-            <a th:href="@{/showNewRecipeform}" class="btn btn-primary btn-sm mb-3 mt-1"><i class="fa fa-plus" aria-hidden="true"></i> Create a Recipe </a>
+            <a th:href="@{/newrecipe}" class="btn btn-primary btn-sm mb-3 mt-1">
+                <i class="fa fa-plus" aria-hidden="true"></i> Create a Recipe </a>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
             <div class="card bg-light text-center mt-1">
@@ -360,9 +361,10 @@
             <td class="text-blue" th:text="${recipe.title}"> </td>
             <td th:text="${recipe.description}"></td>
             <td th:text="${recipe.cooktime} + minute"></td>
+            <td th:text="${recipe.preptime} + minute"></td>
             <td th:text="${recipe.categories}"></td>
             <td> <a th:href="@{/showFormForUpdate/{id}(id=${recipe.id})}" class="btn btn-link btn-rounded btn-sm fw-bold">Update</a>
-                <a th:href="@{/deleteEmployee/{id}(id=${recipe.id})}" class="btn btn-danger">Delete</a>
+                <a th:href="@{/deleteRecipe/{id}(id=${recipe.id})}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         </tbody>

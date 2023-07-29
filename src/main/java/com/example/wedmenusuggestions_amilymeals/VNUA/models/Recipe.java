@@ -1,7 +1,9 @@
 package com.example.wedmenusuggestions_amilymeals.VNUA.models;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Type;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "recipe")
@@ -11,7 +13,8 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long Id;
 
-    @Column(name = "title",length = 100)
+    @Column(name = "title",length = 30,nullable = false)
+    @NotBlank(message = "truường dữ liệu không được để trống")
     private String title;
 
     @Column(name = "cooktime")
@@ -26,10 +29,10 @@ public class Recipe {
     @Column(name = "categories",length = 20)
     private String categories;
 
-    @Column(name = "preptime")
+    @Column(name = "preptime" ,length = 5)
     private  int preptime;
 
-    @Column(name = "directions")
+    @Column(name = "directions",columnDefinition = "TEXT")
     @Lob
     private String directions;
 

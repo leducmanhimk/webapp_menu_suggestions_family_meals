@@ -50,11 +50,11 @@
                     Cancel edits
                 </button>
             </div>
+            <form class="form-horizontal" th:action="@{/saveRecipe}" th:object="${recipe}"  method="POST" enctype="multipart/form-data">
             <div class="modal-body">
                 <div class="recipe_modal modal-body" id="food_object_modal_body">
                     <div class="recipe_info">
                         <div class="recipe_info_container">
-                            <form class="form-horizontal" th:action="@{/saveRecipe}" th:object="${recipe}"  method="POST">
                             <fieldset>
                                 <div class="form-group row image_upload_group">
                                     <label class="col-12 col-sm-4 col-md-3 offset-md-1 col-form-label">Image</label>
@@ -62,14 +62,14 @@
                                         <div class="row">
                                             <div class="col-12 col-md-6">
                                                 <div class="cropped_editor_image">
-                                                    <img style="width: 100%;max-height:350px;" src="https://images.eatthismuch.com/images/recipe_image_placeholder.jpg">
+
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="js-fileapi-wrapper" style="display: inline-block;">
                                                     <div class="js-browse">
                                                         <!--<span class="btn-txt">Upload an image (optional)</span>-->
-                                                        <input type="file" th:field="*{image}" name="filedata" id="recipe_files" class="hidden" accept="image/*">
+                                                        <input type="file"  name="imagefile" id="recipe_files"  accept="image/*">
                                                     </div>
                                                     <div class="js-upload" style="display: none;">
                                                         <div class="progress progress-success">
@@ -93,6 +93,7 @@
                                         title</label>
                                     <div class="col-12 col-sm-8 col-md-6">
                                         <input id="recipe-title" th:field="*{title}" maxlength="100" type="text" name="food_name" class="form-control">
+                                        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}">truường dữ liệu không được để trống</span>
                                     </div>
                                 </div>
                                 <div class="form-group row non-import import_group">
@@ -137,7 +138,7 @@
                                 <div class="form-group row non-import import_group">
                                     <label for="main-dish-input" class="col-12 col-sm-4 col-md-3 offset-md-1 col-form-label">Main
                                         dish</label>
-                                    <div class="col-12 col-sm-8 col-md-6" th:field="*{maindish}" data-editors="main_dish" id="main-dish-input">
+                                    <div class="col-12 col-sm-8 col-md-6" th:field="*{maindish}" data-editors="main_dish" id="main-dish-input" th:value="maindish">
                                         <div id="c4735_main_dish" class="btn-group btn-group-toggle" name="main_dish" data-toggle="buttons">
                                             <label for="c4735_main_dish-0" class="btn btn-selector-primary">
                                                 <input type="radio" name="main_dish" value="false" id="c4735_main_dish-0">Side dish</label>
@@ -171,7 +172,7 @@
                                     </table>
                                     <!-- <table id="recipe_directions_list0" class="table table-bordered"></table> -->
                                 </div>
-                        </form>
+
                         </div>
                     </div>
                 </div>
@@ -180,7 +181,9 @@
                     <button class="save_recipe btn btn-primary" type="submit" >Save recipe</button>
                 </div>
             </div>
+            </form>
         </div>
+
     </div>
 
 
