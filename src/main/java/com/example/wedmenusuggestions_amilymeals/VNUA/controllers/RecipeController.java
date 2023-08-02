@@ -46,7 +46,8 @@ public class RecipeController {
     }
     public void saveOrUpdateRecipe(Recipe recipe, MultipartFile multipartFile) throws IOException {
         String filename = multipartFile.getOriginalFilename();
-        if (filename.equals("")) {
+        if (multipartFile.isEmpty()) {
+            recipe.setImage("placeholder.jpg");
             recipeService.saveRecipe(recipe);
         }
         else {
@@ -54,11 +55,7 @@ public class RecipeController {
             String uploadDir = System.getProperty("user.dir") + "//static/img";
             FileUploadUtil.saveFile(uploadDir, filename, multipartFile);
             recipeService.saveRecipe(recipe);
-
         }
-
-        // save recipe to database
-        recipeService.saveRecipe(recipe);
     }
     @PostMapping("recipe/update")
     public String updateRecipe(@RequestParam(value = "imagefile",required = false)MultipartFile multipartFile ,@Valid @ModelAttribute("recipe")
