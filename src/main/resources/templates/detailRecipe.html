@@ -7,7 +7,6 @@
 </head>
 <body style="background-color: #F9F9F9">
 <div th:insert="~{headnav :: header}">
-
 </div>
 <div class="container  top_margin ">
     <div class="row">
@@ -100,13 +99,10 @@
                                                     </i>
                                                 </div>
                                             </div>
-
                                             <div class="col-auto hide_when_static" style="display: none;">
                                                 <div class="control_button food_refresh_btn" data-original-title="" title="">
-
                                                 </div>
                                             </div>
-
                                             <div class="col-auto hide_when_static" style="display: none;">
                                                 <div class="control_button food_delete_icon" data-original-title="" title="">
                                                     <svg class="etm-icon etm-icon-sm">
@@ -118,7 +114,6 @@
                                                 <a class="control_button add_to_plan" href="/meal-planner/">
                                                   <i class="fa fa-list" style="font-size: larger"></i>
                                                 </a>
-
                                             </div>
                                             <div class="col-auto d-none d-sm-block">
                                                 <div class="control_button copy_permalink" data-original-title="" title="">
@@ -131,27 +126,25 @@
                             </div>
                         </div>
                         <hr>
-                                                    <!-- Directions list -->
-
-                                                    <div class="directions_list collection-list" tabindex="0"><li class="row" data-model-cid="c102">
-                                                        <div class="col-12 direction_border_col">
-                                                            <div class="row">
-                                                                <div class="col-12 col-md-2">Step 1</div>
-                                                                <div class="col-12 col-md-10">
-                                                                    Place a stock pot or Dutch oven over medium heat. Fry the salt pork for a few minutes to release some liquid. Add onion, and saute until translucent. Stir in the navy beans and turnip greens. Bring to a boil, reduce heat to medium-low, and simmer for about 30 minutes. Serve with home made pepper vinegar and a side of cornbread for restaurant-style dining.
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                        <!-- Directions list -->
+                        <div class="directions_list collection-list" tabindex="0"><li class="row" data-model-cid="c102">
+                            <div class="col-12 direction_border_col">
+                                <div class="row">
+                                    <div class="col-12 col-md-2">Step 1</div>
+                                    <div class="col-12 col-md-10">
+                                        <h4 th:text="${recipe.directions}"></h4>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
     </div>
-      <!-- scrip -->
+    </div>
+<!-- scrip -->
 <th:block th:insert="~{link_js :: body/script}"></th:block>
 </body>
 </html>

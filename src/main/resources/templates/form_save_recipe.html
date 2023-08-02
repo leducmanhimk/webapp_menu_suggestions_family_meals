@@ -8,7 +8,7 @@
 <body>
     <div th:insert="~{headnav :: header}">
     </div>
-    <div class="container">
+    <div class="container" style="width: 75%;">
         <div class="modal-content">
             <div class="modal-header">
                 <h4 class="modal-title">Edit recipe</h4>
@@ -16,7 +16,7 @@
                     Cancel edits
                 </button>
             </div>
-            <form class="form-horizontal" th:action="@{/saveRecipe}" th:object="${recipe}"  method="POST" enctype="multipart/form-data">
+            <form class="form-horizontal" th:action="@{/recipe/saverecipe}" th:object="${recipe}"  method="POST" enctype="multipart/form-data">
             <div class="modal-body">
                 <div class="recipe_modal modal-body" id="food_object_modal_body">
                     <div class="recipe_info">
@@ -28,25 +28,20 @@
                                         <div class="row">
                                             <div class="col-12 col-md-6">
                                                 <div class="cropped_editor_image">
+                                                    <img src="" style="width: 100%; max-height: 350px;" alt="image preview" id="imgpreview">
                                                 </div>
                                             </div>
                                             <div class="col-12 col-md-6">
                                                 <div class="js-fileapi-wrapper" style="display: inline-block;">
                                                     <div class="js-browse">
-                                                        <!--<span class="btn-txt">Upload an image (optional)</span>-->
-                                                        <input type="file"  name="imagefile" id="recipe_files"  accept="image/*">
-                                                    </div>
-                                                    <div class="js-upload" style="display: none;">
-                                                        <div class="progress progress-success">
-                                                            <div class="js-progress bar"></div>
-                                                        </div>
-                                                        <span class="btn-txt">Uploading</span>
+                                                        <input type="file"  name="imagefile" id="recipe_files"   accept="image/*" style="display: none;" onchange="document.getElementById('imgpreview').src = window.URL.createObjectURL(this.files[0])">
                                                     </div>
                                                     <div class="text-muted">Optional</div>
-                                                    <label class="btn btn-outline-success" for="recipe_files">
-                                                        <i class="fa fa-camera" aria-hidden="true"></i><br>
-                                                        Upload an image
+                                                    <label class="btn btn-outline-success" for="recipe_files" >
+                                                        <i class="fa fa-camera" aria-hidden="true" ></i><br>
+                                                        <strong style="overflow: clip; white-space: nowrap;"> Upload an image</strong>
                                                     </label>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -58,7 +53,7 @@
                                         title</label>
                                     <div class="col-12 col-sm-8 col-md-6">
                                         <input id="recipe-title" th:field="*{title}" maxlength="100" type="text" name="food_name" class="form-control">
-                                        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="alert alert-danger">truường dữ liệu không được để trống</span>
+                                        <div class="alert alert-danger recipe_validation_error"  th:if="${#fields.hasErrors('title')}" th:errors="*{title}" >The recipe must have a title.</div>
                                     </div>
                                 </div>
                                 <div class="form-group row non-import import_group">
@@ -87,17 +82,17 @@
                                     <label for="category-input" class="col-12 col-sm-4 col-md-3 offset-md-1 col-form-label">Category</label>
                                     <div class="col-12 col-sm-8 col-md-6" data-editors="category_id" id="category-input">
                                         <select id="c4735_category_id" th:field="*{categories}" class="form-control" name="category_id">
-                                            <option value="1">Appetizers</option>
-                                            <option value="2">Breakfast foods</option>
-                                            <option value="3">Desserts</option>
-                                            <option value="4">Drinks</option>
-                                            <option value="5">Mostly meat</option>
-                                            <option value="6">Protein shakes</option>
-                                            <option value="7">Salads</option>
-                                            <option value="8">Sandwiches</option>
-                                            <option value="9">Pasta</option>
-                                            <option value="10">Soups</option>
-                                            <option selected="" value="11">Other</option>
+                                            <option value="Appetizers">Appetizers</option>
+                                            <option value="Breakfast foods">Breakfast foods</option>
+                                            <option value="Desserts">Desserts</option>
+                                            <option value="Drinks">Drinks</option>
+                                            <option value="Mostly meat">Mostly meat</option>
+                                            <option value="Protein shakes">Protein shakes</option>
+                                            <option value="Salads">Salads</option>
+                                            <option value="Sandwiches">Sandwiches</option>
+                                            <option value="Pasta">Pasta</option>
+                                            <option value="Soups">Soups</option>
+                                            <option selected="" value="Other">Other</option>
                                         </select></div>
                                 </div>
                                 <div class="form-group row non-import import_group">
@@ -137,7 +132,6 @@
                                     </table>
                                     <!-- <table id="recipe_directions_list0" class="table table-bordered"></table> -->
                                 </div>
-
                         </div>
                     </div>
                 </div>

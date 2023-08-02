@@ -26,7 +26,6 @@ public class Recipe {
     private String description;
 
     @Column(name = "image")
-
     private String image;
 
     @Column(name = "categories",length = 20)

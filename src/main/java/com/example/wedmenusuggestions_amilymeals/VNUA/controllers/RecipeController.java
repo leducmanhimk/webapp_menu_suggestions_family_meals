@@ -27,7 +27,7 @@ public class RecipeController {
         return "foodBrowser";
     }
 
-    @GetMapping("recipe/saveRecipe")
+    @GetMapping("recipe/saverecipe")
     public String showNewRecipeForm(Model model){
         // create model attribute to bind form data
         Recipe recipe = new Recipe();
@@ -35,23 +35,42 @@ public class RecipeController {
         return "form_save_recipe";
     }
 
-    @PostMapping("recipe/saveRecipe")
-    public String saveRecipe(@RequestParam("imagefile")MultipartFile multipartFile,@Valid @ModelAttribute("recipe")
+    @PostMapping("recipe/saverecipe")
+    public String saveRecipe(@RequestParam(value = "imagefile",required = false)MultipartFile multipartFile ,@Valid @ModelAttribute("recipe")
       Recipe recipe, BindingResult result) throws IOException {
         if (result.hasErrors()) {
             return "form_save_recipe";
         }
+        saveOrUpdateRecipe(recipe,multipartFile);
+        return "redirect:/recipe/foodbrower";
+    }
+    public void saveOrUpdateRecipe(Recipe recipe, MultipartFile multipartFile) throws IOException {
         String filename = multipartFile.getOriginalFilename();
-        System.out.println(filename);
-        recipe.setImage(filename);
-        String uploadDir = System.getProperty("user.dir") + "//static/img";
-        FileUploadUtil.saveFile(uploadDir, filename, multipartFile);
+        if (filename.equals("")) {
+            recipeService.saveRecipe(recipe);
+        }
+        else {
+            recipe.setImage(filename);
+            String uploadDir = System.getProperty("user.dir") + "//static/img";
+            FileUploadUtil.saveFile(uploadDir, filename, multipartFile);
+            recipeService.saveRecipe(recipe);
+
+        }
+
         // save recipe to database
+        recipeService.saveRecipe(recipe);
+    }
+    @PostMapping("recipe/update")
+    public String updateRecipe(@RequestParam(value = "imagefile",required = false)MultipartFile multipartFile ,@Valid @ModelAttribute("recipe")
+                                   Recipe recipe, BindingResult result) throws IOException {
+        recipeService.getRecipeById(recipe.getId());
+        saveOrUpdateRecipe(recipe,multipartFile);
+
         recipeService.saveRecipe(recipe);
         return "redirect:/recipe/foodbrower";
     }
 
-    @GetMapping("recipe/showFormForUpdate/{id}")
+    @GetMapping("recipe/updaterecipe/{id}")
     public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
 
         // get recipe from the service
@@ -59,7 +78,7 @@ public class RecipeController {
 
         // set recipe as a model attribute to pre-populate the form
         model.addAttribute("recipe", recipe);
-        return "update_recipe";
+        return "update_recipe_form";
     }
 
     @GetMapping("/recipe/detail/{id}")
