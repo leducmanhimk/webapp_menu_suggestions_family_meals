@@ -41,10 +41,7 @@ public class RecipeController {
         if (result.hasErrors()) {
             return "form_save_recipe";
         }
-        saveOrUpdateRecipe(recipe,multipartFile);
-        return "redirect:/recipe/foodbrower";
-    }
-    public void saveOrUpdateRecipe(Recipe recipe, MultipartFile multipartFile) throws IOException {
+
         String filename = multipartFile.getOriginalFilename();
         if (multipartFile.isEmpty()) {
             recipe.setImage("placeholder.jpg");
@@ -56,12 +53,26 @@ public class RecipeController {
             FileUploadUtil.saveFile(uploadDir, filename, multipartFile);
             recipeService.saveRecipe(recipe);
         }
+        return "redirect:/recipe/foodbrower";
     }
+
     @PostMapping("recipe/update")
     public String updateRecipe(@RequestParam(value = "imagefile",required = false)MultipartFile multipartFile ,@Valid @ModelAttribute("recipe")
                                    Recipe recipe, BindingResult result) throws IOException {
         recipeService.getRecipeById(recipe.getId());
-        saveOrUpdateRecipe(recipe,multipartFile);
+        System.out.println(recipe.getImage());
+        recipe.setImage(recipe.getImage());
+        String filename = multipartFile.getOriginalFilename();
+        if (multipartFile.isEmpty()) {
+
+            recipeService.saveRecipe(recipe);
+        }
+        else {
+            recipe.setImage(filename);
+            String uploadDir = System.getProperty("user.dir") + "//static/img";
+            FileUploadUtil.saveFile(uploadDir, filename, multipartFile);
+            recipeService.saveRecipe(recipe);
+        }
 
         recipeService.saveRecipe(recipe);
         return "redirect:/recipe/foodbrower";

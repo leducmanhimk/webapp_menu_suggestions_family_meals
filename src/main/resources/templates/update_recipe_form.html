@@ -16,6 +16,7 @@
     </div>
     <form class="form-horizontal" th:action="@{/recipe/update}" th:object="${recipe}"  method="POST" enctype="multipart/form-data">
       <input th:field="*{id}" maxlength="100" type="text" name="food_name" class="form-control" hidden="hidden">
+      <input th:field="*{image}" maxlength="100" type="text" name="food_name" class="form-control" hidden="hidden">
       <div class="modal-body">
         <div class="recipe_modal modal-body" id="food_object_modal_body">
           <div class="recipe_info">
@@ -27,13 +28,13 @@
                     <div class="row">
                       <div class="col-12 col-md-6">
                         <div class="cropped_editor_image">
-                          <img th:src="@{${'static/img/' + recipe.image}}" style="width: 100%; max-height: 350px;" alt="image preview" id="imgpreview"   src="">
+                          <img th:src="@{${'/img/' + recipe.image}}" style="width: 100%; max-height: 350px;" alt="image preview" id="imgpreview"   src="">
                         </div>
                       </div>
                       <div class="col-12 col-md-6">
                         <div class="js-fileapi-wrapper" style="display: inline-block;">
                           <div class="js-browse">
-                            <input type="file"  name="imagefile" id="recipe_files"  th:text="*{image}" accept="image/*" style="display: none;" onchange="document.getElementById('imgpreview').src = window.URL.createObjectURL(this.files[0])">
+                            <input type="file"  name="imagefile" id="recipe_files"  accept="image/*" style="display: none;" onchange="document.getElementById('imgpreview').src = window.URL.createObjectURL(this.files[0])">
                           </div>
                           <div class="text-muted">Optional</div>
                           <label class="btn btn-outline-success" for="recipe_files" >
